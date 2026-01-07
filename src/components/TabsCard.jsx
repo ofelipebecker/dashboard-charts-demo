@@ -8,20 +8,25 @@ const TabsCard = () => {
   const [key, setKey] = useState('home');
 
   return (
-    <Card body className="border-0 rounded-2 shadow-sm">
-      <Tabs
-        id="controlled-tab-example"
-        activeKey={key}
-        onSelect={(k) => setKey(k)}
-        className="mb-3"
-      >
-        <Tab eventKey="home" title="Dados Móveis">
-          Dados Móveis
-        </Tab>
-        <Tab eventKey="profile" title="Voz">
-          Voz
-        </Tab>
-      </Tabs>
+    <Card className="border-0 rounded-2 mt-5 p-2 shadow-sm">
+      <Card.Body>
+        <Card.Title as="h2">
+          <b>Telecom</b> | Móvel
+        </Card.Title>
+        <Tabs
+          id="controlled-tab-example"
+          activeKey={key}
+          onSelect={(k) => setKey(k)}
+          className="mt-5"
+        >
+          <Tab eventKey="home" title="Dados Móveis">
+            Dados Móveis
+          </Tab>
+          <Tab eventKey="profile" title="Voz">
+            Voz
+          </Tab>
+        </Tabs>
+      </Card.Body>
     </Card>
   )
 }
