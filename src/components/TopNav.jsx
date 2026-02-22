@@ -5,8 +5,8 @@ import logo from './../assets/images/logo-horizontal-purple-en.svg';
 
 const TopNav = () => {
   return (
-    <Navbar expand="lg">
-      <Container>
+    <Navbar expand="lg" className='mt-5'>
+      <Container className='p-0'>
         <Navbar.Brand href="/">
           <img
             src={logo}
