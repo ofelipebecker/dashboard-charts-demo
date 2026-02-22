@@ -4,6 +4,8 @@ import Card from 'react-bootstrap/Card';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
+import BarChart from './BarChart';
+
 const TabsCard = () => {
   const [key, setKey] = useState('home');
 
@@ -20,7 +22,7 @@ const TabsCard = () => {
           className="mt-5"
         >
           <Tab eventKey="home" title="Dados Móveis">
-            Dados Móveis
+            <BarChart/>
           </Tab>
           <Tab eventKey="profile" title="Voz">
             Voz
