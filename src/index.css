@@ -54,6 +54,10 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.max-h-50px {
+  max-height: 50px;
+}
+
 .shadow-sm {
   box-shadow: 
     0px 2px 1px -1px rgba(0, 0, 0, 0.2),
