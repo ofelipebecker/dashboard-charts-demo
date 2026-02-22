@@ -13,6 +13,7 @@ html {
 }
 
 body {
+  background-color: var(--light-orange) !important;
   font-size: 1.4rem;
 }
 
