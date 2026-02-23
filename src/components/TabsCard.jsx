@@ -13,8 +13,13 @@ const TabsCard = () => {
   return (
     <Card className="border-0 rounded-2 mt-5 p-2 shadow-sm">
       <Card.Body>
-        <Card.Title as="h2">
-          <b>Telecom</b> | Mobile
+        <Card.Title className='d-flex'>
+          <h2><b>Telecom</b> | Mobile</h2>
+          <Form.Select className='w-auto ms-auto'>
+            <option value="1">Last X months (MMM/202X → MMM/202X)</option>
+            <option value="2">Last X months (MMM/202X → MMM/202X)</option>
+            <option value="3">Last X months (MMM/202X → MMM/202X)</option>
+          </Form.Select>
         </Card.Title>
         <Tabs
           id="controlled-tab-example"
