@@ -115,7 +115,7 @@ h1,
 h2,
 h3,
 h4 {
-  color: var(--main-purple);
+  color: var(--main-purple) !important;
   font-family: 'Zilla Slab';
 }
 
