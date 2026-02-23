@@ -22,20 +22,16 @@ ChartJS.register(
 );
 
 const BarChart = () => {
-  const labels = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ];
+  const generateLast12Months = () => {
+    const now = dayjs();
+    const start = now.subtract(11, 'month');
+
+    return Array.from({ length: 12 }, (_, index) =>
+      start.add(index, 'month').format('MMM/YYYY')
+    );
+  };
+
+  const labels = generateLast12Months();
 
   const data = {
     labels,
