@@ -9,6 +9,9 @@ import {
   Legend,
 } from 'chart.js';
 
+import 'chartjs-adapter-dayjs-4';
+import dayjs from 'dayjs';
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
