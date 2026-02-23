@@ -18,7 +18,7 @@ ChartJS.register(
   BarElement,
   Title,
   Tooltip,
-  Legend
+  Legend,
 );
 
 const BarChart = () => {
@@ -27,7 +27,7 @@ const BarChart = () => {
     const start = now.subtract(11, 'month');
 
     return Array.from({ length: 12 }, (_, index) =>
-      start.add(index, 'month').format('MMM/YYYY')
+      start.add(index, 'month').format('MMM/YYYY'),
     );
   };
 
@@ -62,15 +62,15 @@ const BarChart = () => {
       x: {
         grid: {
           display: false,
-        }
+        },
       },
       y: {
         title: {
           display: true,
-          text: 'Gigabytes'
+          text: 'Gigabytes',
         },
         beginAtZero: true,
-      }
+      },
     },
   };
 

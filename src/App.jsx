@@ -2,11 +2,11 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import PageTitle from './components/PageTitle'
+import PageTitle from './components/PageTitle';
 import TopNav from './components/TopNav';
 import TabsCard from './components/TabsCard';
 
-import './App.css'
+import './App.css';
 
 function App() {
   return (
@@ -14,22 +14,22 @@ function App() {
       <Container fluid>
         <Row>
           <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
-            <TopNav/>
+            <TopNav />
           </Col>
         </Row>
         <Row>
           <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
-            <PageTitle/>
+            <PageTitle />
           </Col>
         </Row>
         <Row>
           <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
-            <TabsCard/>
+            <TabsCard />
           </Col>
         </Row>
       </Container>
     </>
-  )
+  );
 }
 
 export default App;
