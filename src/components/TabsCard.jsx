@@ -1,6 +1,7 @@
 import { useState } from 'react';
 
 import Card from 'react-bootstrap/Card';
+import Form from 'react-bootstrap/Form';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
