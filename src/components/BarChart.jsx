@@ -19,20 +19,30 @@ ChartJS.register(
 );
 
 const BarChart = () => {
-  const labels = ['January', 'February'];
+  const labels = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December'
+  ];
 
   const data = {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
-        data: '10',
-        backgroundColor: 'rgba(255, 99, 132, 0.5)',
-      },
-      {
-        label: 'Dataset 2',
-        data: '30',
-        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+        label: 'Monthly consumption in gigabytes',
+        data: [110, 30, 80, 10, 60, 120, 40, 100, 20, 70, 90, 50],
+        backgroundColor: 'rgba(255, 176, 0, 0.5)',
+        borderColor: 'rgb(255, 176, 0)',
+        borderWidth: 2,
       },
     ],
   };
@@ -41,24 +51,32 @@ const BarChart = () => {
     responsive: true,
     plugins: {
       legend: {
+        align: 'start',
+        labels: {
+          boxHeight: 15,
+          boxWidth: 15,
+        },
         position: 'top',
       },
-      title: {
-        display: true,
-        text: 'Chart.js Bar Chart',
+    },
+    scales: {
+      x: {
+        grid: {
+          display: false,
+        }
       },
+      y: {
+        title: {
+          display: true,
+          text: 'Gigabytes'
+        },
+      }
     },
   };
 
   return (
-    <div
-      style={{
-        width: '100%',
-        minHeight: '300px',
-        backgroundColor: '#f5eff2',
-      }}
-    >
-      <Bar options={options} data={data} />;
+    <div style={{ width: '100%', minHeight: '300px' }}>
+      <Bar options={options} data={data} />
     </div>
   );
 };
