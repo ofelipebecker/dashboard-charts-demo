@@ -73,6 +73,7 @@ const BarChart = () => {
           display: true,
           text: 'Gigabytes'
         },
+        beginAtZero: true,
       }
     },
   };
