@@ -13,7 +13,7 @@ const TabsCard = () => {
     <Card className="border-0 rounded-2 mt-5 p-2 shadow-sm">
       <Card.Body>
         <Card.Title as="h2">
-          <b>Telecom</b> | Móvel
+          <b>Telecom</b> | Mobile
         </Card.Title>
         <Tabs
           id="controlled-tab-example"
@@ -21,11 +21,11 @@ const TabsCard = () => {
           onSelect={(k) => setKey(k)}
           className="mt-5"
         >
-          <Tab eventKey="home" title="Dados Móveis">
+          <Tab eventKey="home" title="Mobile Data">
             <BarChart/>
           </Tab>
-          <Tab eventKey="profile" title="Voz">
-            Voz
+          <Tab eventKey="profile" title="Voice">
+            Voice
           </Tab>
         </Tabs>
       </Card.Body>
