@@ -21,24 +21,40 @@ ChartJS.register(
   Legend,
 );
 
-const BarChart = () => {
-  const generateLast12Months = () => {
-    const now = dayjs();
-    const start = now.subtract(11, 'month');
+const BarChart = ({ period }) => {
+  const monthsCount = parseInt(period);
 
-    return Array.from({ length: 12 }, (_, index) =>
-      start.add(index, 'month').format('MMM/YYYY'),
+  const generateLabels = () => {
+    const currentDate = dayjs();
+    const startDate = currentDate.subtract(monthsCount - 1, 'month');
+
+    return Array.from({ length: monthsCount }, (_, index) =>
+      startDate.add(index, 'month').format('MMM/YYYY'),
     );
   };
 
-  const labels = generateLast12Months();
+  const labels = generateLabels();
+
+  const getDataForPeriod = () => {
+    const fullData = [110, 30, 80, 10, 60, 120, 40, 100, 20, 70, 90, 50];
+
+    switch (monthsCount) {
+      case 3:
+        return fullData.slice(-3);
+      case 6:
+        return fullData.slice(-6);
+      case 12:
+      default:
+        return fullData;
+    }
+  };
 
   const data = {
     labels,
     datasets: [
       {
         label: 'Monthly consumption in gigabytes',
-        data: [110, 30, 80, 10, 60, 120, 40, 100, 20, 70, 90, 50],
+        data: getDataForPeriod(),
         backgroundColor: 'rgba(255, 176, 0, 0.5)',
         borderColor: 'rgb(255, 176, 0)',
         borderWidth: 2,
