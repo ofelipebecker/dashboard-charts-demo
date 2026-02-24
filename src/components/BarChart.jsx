@@ -48,6 +48,7 @@ const BarChart = () => {
 
   const options = {
     responsive: true,
+    maintainAspectRatio: false,
     plugins: {
       legend: {
         align: 'start',
@@ -75,7 +76,7 @@ const BarChart = () => {
   };
 
   return (
-    <div style={{ width: '100%', minHeight: '300px' }}>
+    <div style={{ width: '100%', minHeight: '300px', position: 'relative' }}>
       <Bar options={options} data={data} />
     </div>
   );
