@@ -63,7 +63,7 @@ const TabsCard = () => {
           className='mt-5'
         >
           <Tab eventKey='home' title='Mobile Data'>
-            <BarChart />
+            <BarChart period={selectedPeriod} />
           </Tab>
           <Tab eventKey='profile' title='Voice'>
             Voice
