@@ -68,8 +68,7 @@ const TabsCard = () => {
               chartConfig={{
                 label: 'Monthly consumption in gigabytes',
                 chartData: [110, 30, 80, 10, 60, 120, 40, 100, 20, 70, 90, 50],
-                backgroundColor: 'rgba(255, 176, 0, 0.5)',
-                borderColor: 'rgb(255, 176, 0)',
+                rgbColor: '255, 176, 0',
                 yAxisTitle: 'Gigabytes',
               }}
             />

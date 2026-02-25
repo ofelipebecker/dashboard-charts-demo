@@ -24,8 +24,7 @@ ChartJS.register(
 const BarChart = ({ period, chartConfig }) => {
   const monthsCount = parseInt(period);
 
-  const { label, chartData, backgroundColor, borderColor, yAxisTitle } =
-    chartConfig;
+  const { label, chartData, rgbColor, yAxisTitle } = chartConfig;
 
   const generateLabels = () => {
     const currentDate = dayjs();
@@ -56,8 +55,8 @@ const BarChart = ({ period, chartConfig }) => {
       {
         label,
         data: getDataForPeriod(),
-        backgroundColor,
-        borderColor,
+        backgroundColor: `rgba(${rgbColor}, 0.5)`,
+        borderColor: `rgb(${rgbColor})`,
         borderWidth: 2,
       },
     ],
