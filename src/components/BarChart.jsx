@@ -21,8 +21,11 @@ ChartJS.register(
   Legend,
 );
 
-const BarChart = ({ period }) => {
+const BarChart = ({ period, chartConfig }) => {
   const monthsCount = parseInt(period);
+
+  const { label, chartData, backgroundColor, borderColor, yAxisTitle } =
+    chartConfig;
 
   const generateLabels = () => {
     const currentDate = dayjs();
@@ -36,16 +39,14 @@ const BarChart = ({ period }) => {
   const labels = generateLabels();
 
   const getDataForPeriod = () => {
-    const fullData = [110, 30, 80, 10, 60, 120, 40, 100, 20, 70, 90, 50];
-
     switch (monthsCount) {
       case 3:
-        return fullData.slice(-3);
+        return chartData.slice(-3);
       case 6:
-        return fullData.slice(-6);
+        return chartData.slice(-6);
       case 12:
       default:
-        return fullData;
+        return chartData;
     }
   };
 
@@ -53,10 +54,10 @@ const BarChart = ({ period }) => {
     labels,
     datasets: [
       {
-        label: 'Monthly consumption in gigabytes',
+        label,
         data: getDataForPeriod(),
-        backgroundColor: 'rgba(255, 176, 0, 0.5)',
-        borderColor: 'rgb(255, 176, 0)',
+        backgroundColor,
+        borderColor,
         borderWidth: 2,
       },
     ],
@@ -84,7 +85,7 @@ const BarChart = ({ period }) => {
       y: {
         title: {
           display: true,
-          text: 'Gigabytes',
+          text: yAxisTitle,
         },
         beginAtZero: true,
       },

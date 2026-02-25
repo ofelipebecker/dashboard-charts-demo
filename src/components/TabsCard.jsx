@@ -63,7 +63,16 @@ const TabsCard = () => {
           className='mt-5'
         >
           <Tab eventKey='home' title='Mobile Data'>
-            <BarChart period={selectedPeriod} />
+            <BarChart
+              period={selectedPeriod}
+              chartConfig={{
+                label: 'Monthly consumption in gigabytes',
+                chartData: [110, 30, 80, 10, 60, 120, 40, 100, 20, 70, 90, 50],
+                backgroundColor: 'rgba(255, 176, 0, 0.5)',
+                borderColor: 'rgb(255, 176, 0)',
+                yAxisTitle: 'Gigabytes',
+              }}
+            />
           </Tab>
           <Tab eventKey='profile' title='Voice'>
             Voice
