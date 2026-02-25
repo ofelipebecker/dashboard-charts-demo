@@ -4,7 +4,7 @@ import Stack from 'react-bootstrap/Stack';
 const PageTitle = () => {
   return (
     <>
-      <h1 className='h1 mt-5'>Dashboard Charts Demo</h1>
+      <h1 className='h1 mt-4'>Dashboard Charts Demo</h1>
       <Stack direction='horizontal' gap={2}>
         <Badge pill className='bg-bootstrap-purple'>
           Bootstrap
