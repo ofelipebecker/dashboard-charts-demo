@@ -8,6 +8,8 @@ import Tabs from 'react-bootstrap/Tabs';
 
 import BarChart from './BarChart';
 
+import { mobileChartData } from '../data/mobileChartData';
+
 const TabsCard = () => {
   const [key, setKey] = useState('home');
   const [selectedPeriod, setSelectedPeriod] = useState('3');
@@ -63,15 +65,7 @@ const TabsCard = () => {
           className='mt-5'
         >
           <Tab eventKey='home' title='Mobile Data'>
-            <BarChart
-              period={selectedPeriod}
-              chartConfig={{
-                label: 'Monthly consumption in gigabytes',
-                chartData: [110, 30, 80, 10, 60, 120, 40, 100, 20, 70, 90, 50],
-                rgbColor: '255, 176, 0',
-                yAxisTitle: 'Gigabytes',
-              }}
-            />
+            <BarChart period={selectedPeriod} chartConfig={mobileChartData} />
           </Tab>
           <Tab eventKey='profile' title='Voice'>
             Voice
