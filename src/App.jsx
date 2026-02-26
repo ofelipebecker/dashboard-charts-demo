@@ -11,21 +11,22 @@ import './App.css';
 function App() {
   return (
     <>
-      <Container fluid>
+      <Container>
         <Row>
-          <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
+          <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 10, offset: 1 }}>
             <TopNav />
           </Col>
         </Row>
         <Row>
-          <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
+          <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 5, offset: 1 }}>
             <PageTitle />
           </Col>
         </Row>
-        <Row>
-          <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
+        <Row className='gx-5'>
+          <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 5, offset: 1 }}>
             <TabsCard />
           </Col>
+          <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 5, offset: 0 }}></Col>
         </Row>
       </Container>
     </>
