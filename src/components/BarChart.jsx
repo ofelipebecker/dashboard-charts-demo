@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import { Bar } from 'react-chartjs-2';
 import {
   Chart as ChartJS,
@@ -98,4 +100,4 @@ const BarChart = ({ period, chartConfig }) => {
   );
 };
 
-export default BarChart;
+export default memo(BarChart);
