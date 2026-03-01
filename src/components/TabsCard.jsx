@@ -13,7 +13,7 @@ import { mobileChartConfig } from '../utils/constants/mobileChartConfig';
 import { voiceChartConfig } from '../utils/constants/voiceChartConfig';
 
 const TabsCard = () => {
-  const [key, setKey] = useState('home');
+  const [key, setKey] = useState('mobile');
   const [selectedPeriod, setSelectedPeriod] = useState('3');
 
   const periods = [
@@ -66,7 +66,7 @@ const TabsCard = () => {
           onSelect={(k) => setKey(k)}
           className='mt-5'
         >
-          <Tab eventKey='home' title='Mobile Data'>
+          <Tab eventKey='mobile' title='Mobile Data'>
             <BarChart period={selectedPeriod} chartConfig={mobileChartConfig} />
           </Tab>
           <Tab eventKey='voice' title='Voice'>
