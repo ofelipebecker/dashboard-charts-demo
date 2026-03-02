@@ -1,7 +1,7 @@
 import BarChart from '../../../components/BarChart';
 import TabsCard from '../../../components/TabsCard';
-import { mobileChartConfig } from '../../../utils/constants/mobileChartConfig';
-import { voiceChartConfig } from '../../../utils/constants/voiceChartConfig';
+import { mobileChartConfig } from '../utils/mobileChartConfig';
+import { voiceChartConfig } from '../utils/voiceChartConfig';
 
 const TelecomMobileCard = () => {
   const telecomCharts = [
