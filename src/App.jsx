@@ -4,7 +4,7 @@ import Col from 'react-bootstrap/Col';
 
 import PageTitle from './components/PageTitle';
 import TopNav from './components/TopNav';
-import TabsCard from './components/TabsCard';
+import TelecomMobileCard from './features/telecom-mobile/components/TelecomMobileCard';
 
 import './App.css';
 
@@ -24,7 +24,7 @@ function App() {
         </Row>
         <Row className='gx-5'>
           <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 5, offset: 1 }}>
-            <TabsCard />
+            <TelecomMobileCard />
           </Col>
           <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 5, offset: 0 }}></Col>
         </Row>

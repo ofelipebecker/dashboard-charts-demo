@@ -6,15 +6,13 @@ import Form from 'react-bootstrap/Form';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
 
-import BarChart from './BarChart';
 import LazyTab from './LazyTab';
 
-import { mobileChartConfig } from '../utils/constants/mobileChartConfig';
-import { voiceChartConfig } from '../utils/constants/voiceChartConfig';
+const TabsCard = ({ title, charts = [] }) => {
+  const defaultPeriod = '3';
 
-const TabsCard = () => {
-  const [key, setKey] = useState('mobile');
-  const [selectedPeriod, setSelectedPeriod] = useState('3');
+  const [activeTab, setActiveTab] = useState(charts[0]?.eventKey || 'tab0');
+  const [selectedPeriod, setSelectedPeriod] = useState(defaultPeriod);
 
   const periods = [
     { value: '3', months: 3, label: 'Last 3 months' },
@@ -34,16 +32,16 @@ const TabsCard = () => {
   };
 
   const handlePeriodChange = (e) => {
-    setSelectedPeriod(e.target.value);
+    const newPeriod = e.target.value;
+
+    setSelectedPeriod(newPeriod);
   };
 
   return (
     <Card className='border-0 rounded-2 mt-5 p-2 shadow-sm'>
       <Card.Body>
         <Card.Title className='d-flex'>
-          <h2>
-            <b>Telecom</b> | Mobile
-          </h2>
+          <h2>{title}</h2>
           <Form.Select
             className='w-auto ms-auto'
             value={selectedPeriod}
@@ -61,22 +59,21 @@ const TabsCard = () => {
           </Form.Select>
         </Card.Title>
         <Tabs
-          id='controlled-tab-example'
-          activeKey={key}
-          onSelect={(k) => setKey(k)}
+          activeKey={activeTab}
+          onSelect={(k) => setActiveTab(k)}
           className='mt-5'
         >
-          <Tab eventKey='mobile' title='Mobile Data'>
-            <BarChart period={selectedPeriod} chartConfig={mobileChartConfig} />
-          </Tab>
-          <Tab eventKey='voice' title='Voice'>
-            <LazyTab active={key === 'voice'}>
-              <BarChart
-                period={selectedPeriod}
-                chartConfig={voiceChartConfig}
-              />
-            </LazyTab>
-          </Tab>
+          {charts.map((chart) => (
+            <Tab
+              key={chart.eventKey}
+              eventKey={chart.eventKey}
+              title={chart.title}
+            >
+              <LazyTab active={activeTab === chart.eventKey}>
+                {chart.renderChart(selectedPeriod)}
+              </LazyTab>
+            </Tab>
+          ))}
         </Tabs>
       </Card.Body>
     </Card>
