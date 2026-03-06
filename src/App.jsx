@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import DevicesByStateCard from './features/devices/components/DevicesByStateCard';
 import PageTitle from './components/PageTitle';
 import TopNav from './components/TopNav';
 import FinancialMobileCard from './features/financial-mobile/components/FinancialMobileCard';
@@ -29,6 +30,15 @@ function App() {
           </Col>
           <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 5, offset: 0 }}>
             <FinancialMobileCard />
+          </Col>
+        </Row>
+        <Row>
+          <Col
+            xs={{ span: 8, offset: 2 }}
+            xxl={{ span: 10, offset: 1 }}
+            className='mb-10'
+          >
+            <DevicesByStateCard />
           </Col>
         </Row>
       </Container>
