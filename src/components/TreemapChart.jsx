@@ -32,7 +32,7 @@ const TreemapChart = ({ chartConfig }) => {
             const item = ctx.raw._data;
             const value = ctx.raw.v || 0;
 
-            return `${item.name}\n${value}`;
+            return [item.name, value];
           },
           color: '#fff',
           font: {
