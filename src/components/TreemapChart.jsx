@@ -39,6 +39,7 @@ const TreemapChart = ({ chartConfig }) => {
             size: 11,
             weight: 'bold',
           },
+          overflow: 'hidden',
         },
       },
     ],
