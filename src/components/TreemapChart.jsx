@@ -26,20 +26,20 @@ const TreemapChart = ({ chartConfig }) => {
         borderWidth: 1,
         labels: {
           display: true,
+          overflow: 'hidden',
           formatter: (ctx) => {
-            if (!ctx.raw || !ctx.raw._data) return '';
+            if (!ctx.raw || !ctx.raw._data) return [];
 
             const item = ctx.raw._data;
-            const value = ctx.raw.v || 0;
+            const value = ctx.raw.v;
 
             return [item.name, value];
           },
           color: '#fff',
           font: {
-            size: 11,
+            size: 13,
             weight: 'bold',
           },
-          overflow: 'hidden',
         },
       },
     ],
@@ -51,15 +51,35 @@ const TreemapChart = ({ chartConfig }) => {
     plugins: {
       legend: { display: false },
       tooltip: {
+        position: 'nearest',
+        titleFont: {
+          weight: 'bold',
+          size: 14,
+        },
+        bodyFont: {
+          size: 14,
+        },
+        padding: 10,
         callbacks: {
-          title: () => '',
-          label: (ctx) => {
-            const item = ctx.raw._data;
-            const value = ctx.raw.v || 0;
-            return `${item.name}: ${value} devices`;
+          title: (ctx) => {
+            const item = ctx[0].raw._data;
+
+            return `Devices in ${item.name}: ${item.value}`;
+          },
+          label: () => '',
+          afterBody: (ctx) => {
+            const item = ctx[0].raw._data;
+            console.log(item.value);
+            const devices = item.children[0].devices;
+
+            return [
+              `• Desktops: ${devices.desktops};`,
+              `• Laptops: ${devices.laptops};`,
+              `• Smartphones: ${devices.smartphones};`,
+              `• Tablets: ${devices.tablets};`,
+            ];
           },
         },
-        position: 'nearest',
       },
     },
   };
