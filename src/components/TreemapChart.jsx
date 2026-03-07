@@ -69,7 +69,6 @@ const TreemapChart = ({ chartConfig }) => {
           label: () => '',
           afterBody: (ctx) => {
             const item = ctx[0].raw._data;
-            console.log(item.value);
             const devices = item.children[0].devices;
 
             return [
