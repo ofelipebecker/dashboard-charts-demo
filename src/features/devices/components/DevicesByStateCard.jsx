@@ -5,7 +5,7 @@ import { devicesByStateChartConfig } from '../utils/devicesByStateChartConfig';
 const DevicesByStateCard = () => {
   return (
     <CommonCard
-      title='Devices by State'
+      title='Devices by State | Brazil'
       chart={<TreemapChart chartConfig={devicesByStateChartConfig} />}
     />
   );
