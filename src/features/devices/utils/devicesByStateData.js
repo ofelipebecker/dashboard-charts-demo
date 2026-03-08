@@ -1,6 +1,6 @@
 export const devicesByStateData = [
   {
-    state: 'São Paulo',
+    name: 'São Paulo',
     region: 'Southeast',
     devices: {
       desktops: 6200,
@@ -11,7 +11,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Minas Gerais',
+    name: 'Minas Gerais',
     region: 'Southeast',
     devices: {
       desktops: 2800,
@@ -22,7 +22,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Rio de Janeiro',
+    name: 'Rio de Janeiro',
     region: 'Southeast',
     devices: {
       desktops: 2300,
@@ -33,7 +33,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Bahia',
+    name: 'Bahia',
     region: 'Northeast',
     devices: {
       desktops: 1800,
@@ -44,7 +44,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Paraná',
+    name: 'Paraná',
     region: 'South',
     devices: {
       desktops: 1500,
@@ -55,7 +55,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Rio Grande do Sul',
+    name: 'Rio Grande do Sul',
     region: 'South',
     devices: {
       desktops: 1400,
@@ -66,7 +66,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Santa Catarina',
+    name: 'Santa Catarina',
     region: 'South',
     devices: {
       desktops: 1300,
@@ -77,7 +77,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Pernambuco',
+    name: 'Pernambuco',
     region: 'Northeast',
     devices: {
       desktops: 1100,
@@ -88,7 +88,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Ceará',
+    name: 'Ceará',
     region: 'Northeast',
     devices: {
       desktops: 1100,
@@ -99,7 +99,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Pará',
+    name: 'Pará',
     region: 'North',
     devices: {
       desktops: 1000,
@@ -110,7 +110,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Goiás',
+    name: 'Goiás',
     region: 'Central-West',
     devices: {
       desktops: 1000,
@@ -121,7 +121,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Maranhão',
+    name: 'Maranhão',
     region: 'Northeast',
     devices: {
       desktops: 800,
@@ -132,7 +132,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Distrito Federal',
+    name: 'Distrito Federal',
     region: 'Central-West',
     devices: {
       desktops: 850,
@@ -143,7 +143,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Amazonas',
+    name: 'Amazonas',
     region: 'North',
     devices: {
       desktops: 600,
@@ -154,7 +154,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Espírito Santo',
+    name: 'Espírito Santo',
     region: 'Southeast',
     devices: {
       desktops: 650,
@@ -165,7 +165,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Paraíba',
+    name: 'Paraíba',
     region: 'Northeast',
     devices: {
       desktops: 550,
@@ -176,7 +176,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Mato Grosso',
+    name: 'Mato Grosso',
     region: 'Central-West',
     devices: {
       desktops: 550,
@@ -187,7 +187,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Rio Grande do Norte',
+    name: 'Rio Grande do Norte',
     region: 'Northeast',
     devices: {
       desktops: 450,
@@ -198,7 +198,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Piauí',
+    name: 'Piauí',
     region: 'Northeast',
     devices: {
       desktops: 450,
@@ -209,7 +209,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Alagoas',
+    name: 'Alagoas',
     region: 'Northeast',
     devices: {
       desktops: 450,
@@ -220,7 +220,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Mato Grosso do Sul',
+    name: 'Mato Grosso do Sul',
     region: 'Central-West',
     devices: {
       desktops: 450,
@@ -231,7 +231,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Sergipe',
+    name: 'Sergipe',
     region: 'Northeast',
     devices: {
       desktops: 350,
@@ -242,7 +242,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Rondônia',
+    name: 'Rondônia',
     region: 'North',
     devices: {
       desktops: 250,
@@ -253,7 +253,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Tocantins',
+    name: 'Tocantins',
     region: 'North',
     devices: {
       desktops: 220,
@@ -264,7 +264,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Acre',
+    name: 'Acre',
     region: 'North',
     devices: {
       desktops: 140,
@@ -275,7 +275,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Amapá',
+    name: 'Amapá',
     region: 'North',
     devices: {
       desktops: 120,
@@ -286,7 +286,7 @@ export const devicesByStateData = [
     },
   },
   {
-    state: 'Roraima',
+    name: 'Roraima',
     region: 'North',
     devices: {
       desktops: 110,

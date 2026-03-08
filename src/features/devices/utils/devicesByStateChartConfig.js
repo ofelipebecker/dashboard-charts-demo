@@ -1,14 +1,14 @@
 import { devicesByStateData } from './devicesByStateData';
 
 export const devicesByStateChartConfig = {
-  chartData: devicesByStateData.map((item) => ({
-    name: item.state,
-    value: item.devices.total,
+  chartData: devicesByStateData.map((state) => ({
+    name: state.name,
+    total: state.devices.total,
     devices: {
-      desktops: item.devices.desktops,
-      laptops: item.devices.laptops,
-      smartphones: item.devices.smartphones,
-      tablets: item.devices.tablets,
+      desktops: state.devices.desktops,
+      laptops: state.devices.laptops,
+      smartphones: state.devices.smartphones,
+      tablets: state.devices.tablets,
     },
   })),
   baseColor: '220, 38, 127',

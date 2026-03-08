@@ -7,19 +7,19 @@ ChartJS.register(TreemapController, TreemapElement, Tooltip, Legend);
 const TreemapChart = ({ chartConfig }) => {
   const { chartData, baseColor } = chartConfig;
 
-  const maxValue = Math.max(...chartData.map((item) => item.value));
+  const maxTotal = Math.max(...chartData.map((item) => item.total));
 
   const chartJsData = {
     datasets: [
       {
         tree: chartData,
-        key: 'value',
+        key: 'total',
         groups: ['name'],
         backgroundColor: (ctx) => {
           if (!ctx.raw || !ctx.raw._data) return `rgba(${baseColor}, 0.5)`;
 
-          const value = ctx.raw.v || 0;
-          const opacity = 0.3 + (value / maxValue) * 0.9;
+          const total = ctx.raw.v;
+          const opacity = 0.3 + (total / maxTotal) * 0.9;
 
           return `rgba(${baseColor}, ${opacity})`;
         },
@@ -28,12 +28,9 @@ const TreemapChart = ({ chartConfig }) => {
           display: true,
           overflow: 'hidden',
           formatter: (ctx) => {
-            if (!ctx.raw || !ctx.raw._data) return [];
-
             const item = ctx.raw._data;
-            const value = ctx.raw.v;
 
-            return [item.name, value];
+            return [item.name, item.total];
           },
           color: '#fff',
           font: {
@@ -64,7 +61,7 @@ const TreemapChart = ({ chartConfig }) => {
           title: (ctx) => {
             const item = ctx[0].raw._data;
 
-            return `Devices in ${item.name}: ${item.value}`;
+            return `Devices in ${item.name}: ${item.total}`;
           },
           label: () => '',
           afterBody: (ctx) => {
