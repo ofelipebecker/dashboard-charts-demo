@@ -7,7 +7,7 @@ ChartJS.register(TreemapController, TreemapElement, Tooltip, Legend);
 const TreemapChart = ({ chartConfig }) => {
   const { chartData, baseColor } = chartConfig;
 
-  const maxTotal = Math.max(...chartData.map((item) => item.total));
+  const maxTotal = Math.max(...chartData.map((state) => state.total));
 
   const chartJsData = {
     datasets: [
@@ -28,9 +28,9 @@ const TreemapChart = ({ chartConfig }) => {
           display: true,
           overflow: 'hidden',
           formatter: (ctx) => {
-            const item = ctx.raw._data;
+            const state = ctx.raw._data;
 
-            return [item.name, item.total];
+            return [state.name, state.total];
           },
           color: '#fff',
           font: {
@@ -59,14 +59,14 @@ const TreemapChart = ({ chartConfig }) => {
         padding: 10,
         callbacks: {
           title: (ctx) => {
-            const item = ctx[0].raw._data;
+            const state = ctx[0].raw._data;
 
-            return `Devices in ${item.name}: ${item.total}`;
+            return `Devices in ${state.name}: ${state.total}`;
           },
           label: () => '',
           afterBody: (ctx) => {
-            const item = ctx[0].raw._data;
-            const devices = item.children[0].devices;
+            const state = ctx[0].raw._data;
+            const devices = state.children[0].devices;
 
             return [
               `• Desktops: ${devices.desktops};`,
