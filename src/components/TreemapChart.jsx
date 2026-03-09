@@ -12,6 +12,14 @@ const TreemapChart = ({ chartConfig }) => {
   const chartRef = useRef(null);
   const [showRegions, setShowRegions] = useState(false);
 
+  const regionColors = {
+    North: '100, 143, 255',
+    Northeast: '120, 94, 240',
+    Southeast: '220, 38, 127',
+    South: '254, 97, 0',
+    'Central-West': '255, 176, 0',
+  };
+
   const maxTotal = Math.max(...chartData.map((state) => state.total));
 
   const handleToggleRegions = () => {
@@ -38,8 +46,15 @@ const TreemapChart = ({ chartConfig }) => {
         backgroundColor: (ctx) => {
           if (!ctx.raw || !ctx.raw._data) return `rgba(${baseColor}, 0.5)`;
 
+          const item = ctx.raw._data;
           const total = ctx.raw.v;
           const opacity = 0.3 + (total / maxTotal) * 0.9;
+
+          if (showRegions) {
+            if (item.region && !item.name) {
+              return `rgb(${regionColors[item.region]})`;
+            }
+          }
 
           return `rgba(${baseColor}, ${opacity})`;
         },
