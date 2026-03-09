@@ -62,6 +62,7 @@ const TreemapChart = ({ chartConfig }) => {
             return `rgba(${baseColor}, ${opacity})`;
           }
         },
+        borderRadius: 4,
         borderWidth: 1,
         captions: {
           align: 'center',
