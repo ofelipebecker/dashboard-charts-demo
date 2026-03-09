@@ -82,7 +82,7 @@ const TreemapChart = ({ chartConfig }) => {
           },
           color: '#fff',
           font: {
-            size: 13,
+            size: 12,
             weight: 'bold',
           },
         },
