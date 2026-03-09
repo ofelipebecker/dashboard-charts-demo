@@ -47,16 +47,20 @@ const TreemapChart = ({ chartConfig }) => {
           if (!ctx.raw || !ctx.raw._data) return `rgba(${baseColor}, 0.5)`;
 
           const item = ctx.raw._data;
-          const total = ctx.raw.v;
-          const opacity = 0.3 + (total / maxTotal) * 0.9;
 
           if (showRegions) {
             if (item.region && !item.name) {
               return `rgb(${regionColors[item.region]})`;
-            }
-          }
+            } else {
+              const opacity = 0.3 + (item.total / maxTotal) * 0.9;
 
-          return `rgba(${baseColor}, ${opacity})`;
+              return `rgba(${regionColors[item.region]}, ${opacity})`;
+            }
+          } else {
+            const opacity = 0.3 + (item.total / maxTotal) * 0.9;
+
+            return `rgba(${baseColor}, ${opacity})`;
+          }
         },
         borderWidth: 1,
         captions: {
