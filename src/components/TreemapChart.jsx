@@ -50,14 +50,14 @@ const TreemapChart = ({ chartConfig }) => {
 
           if (showRegions) {
             if (item.region && !item.name) {
-              return `rgb(${regionColors[item.region]})`;
+              return `rgba(${regionColors[item.region]}, 0.7)`;
             } else {
               const opacity = 0.3 + (item.total / maxTotal) * 0.9;
 
               return `rgba(${regionColors[item.region]}, ${opacity})`;
             }
           } else {
-            const opacity = 0.3 + (item.total / maxTotal) * 0.9;
+            const opacity = 0.3 + (item.total / maxTotal) * 0.2;
 
             return `rgba(${baseColor}, ${opacity})`;
           }
