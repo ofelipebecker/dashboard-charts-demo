@@ -7,34 +7,32 @@ import { TreemapController, TreemapElement } from 'chartjs-chart-treemap';
 
 ChartJS.register(TreemapController, TreemapElement, Tooltip, Legend);
 
-const TreemapChart = ({ chartConfig }) => {
-  const { chartData, baseColor } = chartConfig;
+const TreemapChart = ({
+  chartConfig,
+  groups,
+  getBackgroundColor,
+  getLabelFormatter,
+  getTooltipCallbacks,
+  buttonText,
+  showToggle,
+}) => {
+  const { chartData } = chartConfig;
   const chartRef = useRef(null);
-  const [showRegions, setShowRegions] = useState(false);
+  const [activeGroup, setActiveGroup] = useState('default');
 
-  const regionColors = {
-    North: '100, 143, 255',
-    Northeast: '120, 94, 240',
-    Southeast: '220, 38, 127',
-    South: '254, 97, 0',
-    'Central-West': '255, 176, 0',
-  };
+  const maxTotal = Math.max(
+    ...chartData.map((item) => item.total || item.value),
+  );
 
-  const maxTotal = Math.max(...chartData.map((state) => state.total));
-
-  const handleToggleRegions = () => {
+  const handleToggle = () => {
     if (!chartRef.current) return;
 
     const chart = chartRef.current;
-    const newShowRegions = !showRegions;
+    const newGroup = activeGroup === 'default' ? 'alternate' : 'default';
 
-    chart.data.datasets[0].groups = newShowRegions
-      ? ['region', 'name']
-      : ['name'];
-
+    chart.data.datasets[0].groups = groups[newGroup];
     chart.update();
-
-    setShowRegions(newShowRegions);
+    setActiveGroup(newGroup);
   };
 
   const chartJsData = {
@@ -42,26 +40,9 @@ const TreemapChart = ({ chartConfig }) => {
       {
         tree: chartData,
         key: 'total',
-        groups: showRegions ? ['region', 'abbreviation'] : ['abbreviation'],
-        backgroundColor: (ctx) => {
-          if (!ctx.raw || !ctx.raw._data) return `rgba(${baseColor}, 0.5)`;
-
-          const item = ctx.raw._data;
-
-          if (showRegions) {
-            if (item.region && !item.name) {
-              return `rgba(${regionColors[item.region]}, 0.7)`;
-            } else {
-              const opacity = 0.3 + (item.total / maxTotal) * 0.4;
-
-              return `rgba(${regionColors[item.region]}, ${opacity})`;
-            }
-          } else {
-            const opacity = 0.3 + (item.total / maxTotal) * 0.9;
-
-            return `rgba(${baseColor}, ${opacity})`;
-          }
-        },
+        groups: groups[activeGroup],
+        backgroundColor: (ctx) =>
+          getBackgroundColor(ctx, activeGroup, maxTotal),
         borderRadius: 4,
         borderWidth: 1,
         captions: {
@@ -76,15 +57,7 @@ const TreemapChart = ({ chartConfig }) => {
         labels: {
           display: true,
           overflow: 'hidden',
-          formatter: (ctx) => {
-            const item = ctx.raw._data;
-
-            if (item.region && !item.abbreviation) {
-              return [item.region, item.total];
-            }
-
-            return [item.abbreviation, item.total];
-          },
+          formatter: (ctx) => getLabelFormatter(ctx, activeGroup),
           color: '#fff',
           font: {
             size: 12,
@@ -110,66 +83,30 @@ const TreemapChart = ({ chartConfig }) => {
           size: 14,
         },
         padding: 10,
-        callbacks: {
-          title: (ctx) => {
-            const item = ctx[0].raw._data;
-
-            if (item.region) {
-              return `Region: ${item.region} (Total: ${item.total} devices)`;
-            }
-
-            return `${item.children[0].name}: ${item.total} devices`;
-          },
-          label: () => '',
-          afterBody: (ctx) => {
-            const item = ctx[0].raw._data;
-
-            if (showRegions) {
-              const children = item.children;
-
-              const totals = children.reduce(
-                (acc, state) => {
-                  return {
-                    desktops: acc.desktops + state.devices.desktops,
-                    laptops: acc.laptops + state.devices.laptops,
-                    smartphones: acc.smartphones + state.devices.smartphones,
-                    tablets: acc.tablets + state.devices.tablets,
-                  };
-                },
-                { desktops: 0, laptops: 0, smartphones: 0, tablets: 0 },
-              );
-
-              return [
-                `• Desktops: ${totals.desktops};`,
-                `• Laptops: ${totals.laptops};`,
-                `• Smartphones: ${totals.smartphones};`,
-                `• Tablets: ${totals.tablets};`,
-              ];
-            } else {
-              const state = item.children[0];
-              return [
-                `• Desktops: ${state.devices.desktops};`,
-                `• Laptops: ${state.devices.laptops};`,
-                `• Smartphones: ${state.devices.smartphones};`,
-                `• Tablets: ${state.devices.tablets};`,
-              ];
-            }
-          },
-        },
+        callbacks: getTooltipCallbacks(activeGroup),
       },
     },
   };
 
+  const getButtonText = () => {
+    if (typeof buttonText === 'string') return buttonText;
+    return activeGroup === 'default'
+      ? buttonText.default
+      : buttonText.alternate;
+  };
+
   return (
     <div>
-      <Button
-        className='my-4'
-        onClick={handleToggleRegions}
-        size='lg'
-        variant='warning'
-      >
-        {showRegions ? 'Hide Regions' : 'Show Regions'}
-      </Button>
+      {showToggle && (
+        <Button
+          className='my-4'
+          onClick={handleToggle}
+          size='lg'
+          variant='warning'
+        >
+          {getButtonText()}
+        </Button>
+      )}
       <div style={{ width: '100%', minHeight: '400px', position: 'relative' }}>
         <Chart
           ref={chartRef}
