@@ -42,7 +42,7 @@ const TreemapChart = ({ chartConfig }) => {
       {
         tree: chartData,
         key: 'total',
-        groups: showRegions ? ['region', 'name'] : ['name'],
+        groups: showRegions ? ['region', 'abbreviation'] : ['abbreviation'],
         backgroundColor: (ctx) => {
           if (!ctx.raw || !ctx.raw._data) return `rgba(${baseColor}, 0.5)`;
 
@@ -79,11 +79,11 @@ const TreemapChart = ({ chartConfig }) => {
           formatter: (ctx) => {
             const item = ctx.raw._data;
 
-            if (item.region && !item.name) {
+            if (item.region && !item.abbreviation) {
               return [item.region, item.total];
             }
 
-            return [item.name, item.total];
+            return [item.abbreviation, item.total];
           },
           color: '#fff',
           font: {
@@ -114,11 +114,11 @@ const TreemapChart = ({ chartConfig }) => {
           title: (ctx) => {
             const item = ctx[0].raw._data;
 
-            if (item.region && !item.name) {
+            if (item.region) {
               return `Region: ${item.region} (Total: ${item.total} devices)`;
             }
 
-            return `${item.name}: ${item.total} devices`;
+            return `${item.children[0].name}: ${item.total} devices`;
           },
           label: () => '',
           afterBody: (ctx) => {
