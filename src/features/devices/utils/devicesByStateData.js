@@ -1,6 +1,7 @@
 export const devicesByStateData = [
   {
     name: 'São Paulo',
+    abbreviation: 'SP',
     region: 'Southeast',
     devices: {
       desktops: 6200,
@@ -12,6 +13,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Minas Gerais',
+    abbreviation: 'MG',
     region: 'Southeast',
     devices: {
       desktops: 2800,
@@ -23,6 +25,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Rio de Janeiro',
+    abbreviation: 'RJ',
     region: 'Southeast',
     devices: {
       desktops: 2300,
@@ -34,6 +37,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Bahia',
+    abbreviation: 'BA',
     region: 'Northeast',
     devices: {
       desktops: 1800,
@@ -45,6 +49,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Paraná',
+    abbreviation: 'PR',
     region: 'South',
     devices: {
       desktops: 1500,
@@ -56,6 +61,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Rio Grande do Sul',
+    abbreviation: 'RS',
     region: 'South',
     devices: {
       desktops: 1400,
@@ -67,6 +73,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Santa Catarina',
+    abbreviation: 'SC',
     region: 'South',
     devices: {
       desktops: 1300,
@@ -78,6 +85,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Pernambuco',
+    abbreviation: 'PE',
     region: 'Northeast',
     devices: {
       desktops: 1100,
@@ -89,6 +97,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Ceará',
+    abbreviation: 'CE',
     region: 'Northeast',
     devices: {
       desktops: 1100,
@@ -100,6 +109,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Pará',
+    abbreviation: 'PA',
     region: 'North',
     devices: {
       desktops: 1000,
@@ -111,6 +121,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Goiás',
+    abbreviation: 'GO',
     region: 'Central-West',
     devices: {
       desktops: 1000,
@@ -122,6 +133,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Maranhão',
+    abbreviation: 'MA',
     region: 'Northeast',
     devices: {
       desktops: 800,
@@ -133,6 +145,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Distrito Federal',
+    abbreviation: 'DF',
     region: 'Central-West',
     devices: {
       desktops: 850,
@@ -144,6 +157,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Amazonas',
+    abbreviation: 'AM',
     region: 'North',
     devices: {
       desktops: 600,
@@ -155,6 +169,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Espírito Santo',
+    abbreviation: 'ES',
     region: 'Southeast',
     devices: {
       desktops: 650,
@@ -166,6 +181,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Paraíba',
+    abbreviation: 'PB',
     region: 'Northeast',
     devices: {
       desktops: 550,
@@ -177,6 +193,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Mato Grosso',
+    abbreviation: 'MT',
     region: 'Central-West',
     devices: {
       desktops: 550,
@@ -188,6 +205,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Rio Grande do Norte',
+    abbreviation: 'RN',
     region: 'Northeast',
     devices: {
       desktops: 450,
@@ -199,6 +217,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Piauí',
+    abbreviation: 'PI',
     region: 'Northeast',
     devices: {
       desktops: 450,
@@ -210,6 +229,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Alagoas',
+    abbreviation: 'AL',
     region: 'Northeast',
     devices: {
       desktops: 450,
@@ -221,6 +241,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Mato Grosso do Sul',
+    abbreviation: 'MS',
     region: 'Central-West',
     devices: {
       desktops: 450,
@@ -232,6 +253,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Sergipe',
+    abbreviation: 'SE',
     region: 'Northeast',
     devices: {
       desktops: 350,
@@ -243,6 +265,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Rondônia',
+    abbreviation: 'RO',
     region: 'North',
     devices: {
       desktops: 250,
@@ -254,6 +277,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Tocantins',
+    abbreviation: 'TO',
     region: 'North',
     devices: {
       desktops: 220,
@@ -265,6 +289,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Acre',
+    abbreviation: 'AC',
     region: 'North',
     devices: {
       desktops: 140,
@@ -276,6 +301,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Amapá',
+    abbreviation: 'AP',
     region: 'North',
     devices: {
       desktops: 120,
@@ -287,6 +313,7 @@ export const devicesByStateData = [
   },
   {
     name: 'Roraima',
+    abbreviation: 'RR',
     region: 'North',
     devices: {
       desktops: 110,
