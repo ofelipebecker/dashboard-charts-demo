@@ -52,12 +52,12 @@ const TreemapChart = ({ chartConfig }) => {
             if (item.region && !item.name) {
               return `rgba(${regionColors[item.region]}, 0.7)`;
             } else {
-              const opacity = 0.3 + (item.total / maxTotal) * 0.9;
+              const opacity = 0.3 + (item.total / maxTotal) * 0.4;
 
               return `rgba(${regionColors[item.region]}, ${opacity})`;
             }
           } else {
-            const opacity = 0.3 + (item.total / maxTotal) * 0.2;
+            const opacity = 0.3 + (item.total / maxTotal) * 0.9;
 
             return `rgba(${baseColor}, ${opacity})`;
           }
