@@ -3,6 +3,7 @@ import { devicesByStateData } from './devicesByStateData';
 export const devicesByStateChartConfig = {
   chartData: devicesByStateData.map((state) => ({
     name: state.name,
+    abbreviation: state.abbreviation,
     region: state.region,
     total: state.devices.total,
     devices: {
