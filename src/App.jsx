@@ -2,29 +2,43 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+import DevicesByStateCard from './features/devices/components/DevicesByStateCard';
 import PageTitle from './components/PageTitle';
 import TopNav from './components/TopNav';
-import TabsCard from './components/TabsCard';
+import FinancialMobileCard from './features/financial-mobile/components/FinancialMobileCard';
+import TelecomMobileCard from './features/telecom-mobile/components/TelecomMobileCard';
 
 import './App.css';
 
 function App() {
   return (
     <>
-      <Container fluid>
+      <Container>
         <Row>
-          <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
+          <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 10, offset: 1 }}>
             <TopNav />
           </Col>
         </Row>
         <Row>
-          <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
+          <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 5, offset: 1 }}>
             <PageTitle />
           </Col>
         </Row>
+        <Row className='gx-5'>
+          <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 5, offset: 1 }}>
+            <TelecomMobileCard />
+          </Col>
+          <Col xs={{ span: 8, offset: 2 }} xxl={{ span: 5, offset: 0 }}>
+            <FinancialMobileCard />
+          </Col>
+        </Row>
         <Row>
-          <Col xs={{ span: 10, offset: 1 }} md={{ span: 8, offset: 2 }}>
-            <TabsCard />
+          <Col
+            xs={{ span: 8, offset: 2 }}
+            xxl={{ span: 10, offset: 1 }}
+            className='mb-10'
+          >
+            <DevicesByStateCard />
           </Col>
         </Row>
       </Container>

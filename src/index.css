@@ -123,8 +123,62 @@ h4 {
   max-height: 100px;
 }
 
+.my-6,
+.mb-6 {
+  margin-bottom: 4rem !important;
+}
+
+.my-7,
+.mb-7 {
+  margin-bottom: 5rem !important;
+}
+
+.my-8,
+.mb-8 {
+  margin-bottom: 6rem !important;
+}
+
+.my-9,
+.mb-9 {
+  margin-bottom: 8rem !important;
+}
+
+.my-10,
+.mb-10 {
+  margin-bottom: 10rem !important;
+}
+
+.my-6,
+.mt-6 {
+  margin-top: 4rem !important;
+}
+
+.my-7,
+.mt-7 {
+  margin-top: 5rem !important;
+}
+
+.my-8,
+.mt-8 {
+  margin-top: 6rem !important;
+}
+
+.my-9,
+.mt-9 {
+  margin-top: 8rem !important;
+}
+
+.my-10,
+.mt-10 {
+  margin-top: 10rem !important;
+}
+
 select.form-select {
   font-size: 1.3rem;
+}
+
+small {
+  font-size: 1.1rem;
 }
 
 .shadow-sm {
