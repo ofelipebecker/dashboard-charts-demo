@@ -177,6 +177,10 @@ select.form-select {
   font-size: 1.3rem;
 }
 
+small {
+  font-size: 1.1rem;
+}
+
 .shadow-sm {
   box-shadow:
     0px 2px 1px -1px rgba(0, 0, 0, 0.2),
