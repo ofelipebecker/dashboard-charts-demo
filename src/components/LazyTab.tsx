@@ -1,7 +1,7 @@
 import { type ReactNode, useState } from 'react';
 
 type LazyTabProps = {
-  active: 'mobile' | 'voice' | 'tab0';
+  active: boolean;
   children: ReactNode;
 };
 
