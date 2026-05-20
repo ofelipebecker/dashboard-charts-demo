@@ -83,13 +83,15 @@ const DevicesByStateCard = () => {
     },
   });
 
-  const subtitle =
-    'Demo: Device distribution of a hypothetical company across Brazilian states and regions.';
+  const cardTitles = {
+    main: 'Devices by State | Brazil',
+    secondary:
+      'Demo: Device distribution of a hypothetical company across Brazilian states and regions.',
+  };
 
   return (
     <CommonCard
-      title='Devices by State | Brazil'
-      subtitle={subtitle}
+      cardTitles={cardTitles}
       chart={
         <TreemapChart
           chartConfig={devicesByStateChartConfig}
