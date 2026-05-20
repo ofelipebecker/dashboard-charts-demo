@@ -55,9 +55,8 @@ const DevicesByStateCard = () => {
     afterBody: (ctx) => {
       const item = ctx[0].raw._data;
 
-      if (activeGroup === 'alternate') {
-        const statesData = item.children;
-        const totals = statesData.reduce(
+      const getRegionsTotals = (statesData) => {
+        return statesData.reduce(
           (acc, state) => ({
             desktops: acc.desktops + state.devices.desktops,
             laptops: acc.laptops + state.devices.laptops,
@@ -66,6 +65,11 @@ const DevicesByStateCard = () => {
           }),
           { desktops: 0, laptops: 0, smartphones: 0, tablets: 0 }
         );
+      };
+
+      if (activeGroup === 'alternate') {
+        const statesData = item.children;
+        const totals = getRegionsTotals(statesData);
 
         return [
           `• Desktops: ${totals.desktops};`,
