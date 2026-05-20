@@ -49,7 +49,9 @@ const DevicesByStateCard = () => {
 
       return `${item.children[0].name}: ${item.total} devices`;
     },
-    label: () => '',
+    label: function suppressTooltipLabel() {
+      return '';
+    },
     afterBody: (ctx) => {
       const item = ctx[0].raw._data;
 
