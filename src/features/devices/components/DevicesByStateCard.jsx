@@ -67,26 +67,25 @@ const DevicesByStateCard = () => {
         );
       };
 
+      const generateTooltipBody = (devices) => {
+        return [
+          `• Desktops: ${devices.desktops};`,
+          `• Laptops: ${devices.laptops};`,
+          `• Smartphones: ${devices.smartphones};`,
+          `• Tablets: ${devices.tablets};`,
+        ];
+      };
+
       if (activeGroup === 'alternate') {
         const regionStatesData = item.children;
         const regionDevices = getRegionsTotals(regionStatesData);
 
-        return [
-          `• Desktops: ${regionDevices.desktops};`,
-          `• Laptops: ${regionDevices.laptops};`,
-          `• Smartphones: ${regionDevices.smartphones};`,
-          `• Tablets: ${regionDevices.tablets};`,
-        ];
+        return generateTooltipBody(regionDevices);
       } else {
         const stateData = item.children[0];
         const stateDevices = stateData.devices;
 
-        return [
-          `• Desktops: ${stateDevices.desktops};`,
-          `• Laptops: ${stateDevices.laptops};`,
-          `• Smartphones: ${stateDevices.smartphones};`,
-          `• Tablets: ${stateDevices.tablets};`,
-        ];
+        return generateTooltipBody(stateDevices);
       }
     },
   });
