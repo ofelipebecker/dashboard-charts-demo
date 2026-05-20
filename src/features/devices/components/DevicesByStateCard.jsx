@@ -78,12 +78,13 @@ const DevicesByStateCard = () => {
           `• Tablets: ${totals.tablets};`,
         ];
       } else {
-        const state = item.children[0];
+        const stateData = item.children[0];
+
         return [
-          `• Desktops: ${state.devices.desktops};`,
-          `• Laptops: ${state.devices.laptops};`,
-          `• Smartphones: ${state.devices.smartphones};`,
-          `• Tablets: ${state.devices.tablets};`,
+          `• Desktops: ${stateData.devices.desktops};`,
+          `• Laptops: ${stateData.devices.laptops};`,
+          `• Smartphones: ${stateData.devices.smartphones};`,
+          `• Tablets: ${stateData.devices.tablets};`,
         ];
       }
     },
