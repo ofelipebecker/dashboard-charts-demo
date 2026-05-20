@@ -29,7 +29,7 @@ const DevicesByStateCard = () => {
     }
   };
 
-  const getLabelFormatter = (ctx, activeGroup) => {
+  const formatLabel = (ctx, activeGroup) => {
     const item = ctx.raw._data;
 
     if (activeGroup === 'alternate' && item.region && !item.abbreviation) {
@@ -95,12 +95,12 @@ const DevicesByStateCard = () => {
       chart={
         <TreemapChart
           chartConfig={devicesByStateChartConfig}
+          formatLabel={formatLabel}
           groups={{
             default: ['abbreviation'],
             alternate: ['region', 'abbreviation'],
           }}
           getBackgroundColor={getBackgroundColor}
-          getLabelFormatter={getLabelFormatter}
           getTooltipCallbacks={getTooltipCallbacks}
           buttonText={{
             default: 'Show Regions',

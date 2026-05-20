@@ -9,9 +9,9 @@ ChartJS.register(TreemapController, TreemapElement, Tooltip, Legend);
 
 const TreemapChart = ({
   chartConfig,
+  formatLabel,
   groups,
   getBackgroundColor,
-  getLabelFormatter,
   getTooltipCallbacks,
   buttonText,
   showToggle,
@@ -57,7 +57,7 @@ const TreemapChart = ({
         labels: {
           display: true,
           overflow: 'hidden',
-          formatter: (ctx) => getLabelFormatter(ctx, activeGroup),
+          formatter: (ctx) => formatLabel(ctx, activeGroup),
           color: '#fff',
           font: {
             size: 12,
