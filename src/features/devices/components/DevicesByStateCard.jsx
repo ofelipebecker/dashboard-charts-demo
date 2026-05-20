@@ -56,8 +56,8 @@ const DevicesByStateCard = () => {
       const item = ctx[0].raw._data;
 
       if (activeGroup === 'alternate') {
-        const children = item.children;
-        const totals = children.reduce(
+        const statesData = item.children;
+        const totals = statesData.reduce(
           (acc, state) => ({
             desktops: acc.desktops + state.devices.desktops,
             laptops: acc.laptops + state.devices.laptops,
