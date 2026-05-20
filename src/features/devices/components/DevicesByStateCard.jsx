@@ -69,13 +69,13 @@ const DevicesByStateCard = () => {
 
       if (activeGroup === 'alternate') {
         const regionStatesData = item.children;
-        const totals = getRegionsTotals(regionStatesData);
+        const regionDevices = getRegionsTotals(regionStatesData);
 
         return [
-          `• Desktops: ${totals.desktops};`,
-          `• Laptops: ${totals.laptops};`,
-          `• Smartphones: ${totals.smartphones};`,
-          `• Tablets: ${totals.tablets};`,
+          `• Desktops: ${regionDevices.desktops};`,
+          `• Laptops: ${regionDevices.laptops};`,
+          `• Smartphones: ${regionDevices.smartphones};`,
+          `• Tablets: ${regionDevices.tablets};`,
         ];
       } else {
         const stateData = item.children[0];
