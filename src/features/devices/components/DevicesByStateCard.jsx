@@ -26,14 +26,10 @@ const DevicesByStateCard = () => {
       return `rgba(${regionColors[cellData.region]}, 0.7)`;
   };
 
-  const formatLabel = (ctx, activeGroup) => {
-    const item = ctx.raw._data;
+  const formatLabel = (ctx) => {
+    const cellData = ctx.raw._data;
 
-    if (activeGroup === 'alternate' && item.region && !item.abbreviation) {
-      return [item.region, item.total];
-    }
-
-    return [item.abbreviation, item.total];
+    return [cellData.abbreviation, cellData.total];
   };
 
   const getTooltipCallbacks = (activeGroup) => ({

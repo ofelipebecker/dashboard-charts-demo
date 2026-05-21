@@ -57,7 +57,7 @@ const TreemapChart = ({
         labels: {
           display: true,
           overflow: 'hidden',
-          formatter: (ctx) => formatLabel(ctx, activeGroup),
+          formatter: (ctx) => formatLabel(ctx),
           color: '#fff',
           font: {
             size: 12,
