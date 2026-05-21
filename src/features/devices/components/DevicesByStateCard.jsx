@@ -16,6 +16,11 @@ const DevicesByStateCard = () => {
 
     const item = ctx.raw._data;
 
+    if (activeGroup === 'default') {
+      const opacity = 0.3 + (item.total / maxTotal) * 0.9;
+      return `rgba(220, 38, 127, ${opacity})`;
+    }
+
     if (activeGroup === 'alternate') {
       if (item.region && !item.name) {
         return `rgba(${regionColors[item.region]}, 0.7)`;
@@ -23,9 +28,6 @@ const DevicesByStateCard = () => {
         const opacity = 0.3 + (item.total / maxTotal) * 0.4;
         return `rgba(${regionColors[item.region]}, ${opacity})`;
       }
-    } else {
-      const opacity = 0.3 + (item.total / maxTotal) * 0.9;
-      return `rgba(220, 38, 127, ${opacity})`;
     }
   };
 
