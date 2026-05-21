@@ -79,8 +79,7 @@ const DevicesByStateCard = () => {
       };
 
       if (activeGroup === 'default') {
-        const stateData = item.children[0];
-        const stateDevices = stateData.devices;
+        const stateDevices = item.children[0].devices;
 
         return generateTooltipBody(stateDevices);
       }
