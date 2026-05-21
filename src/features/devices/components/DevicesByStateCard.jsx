@@ -22,14 +22,8 @@ const DevicesByStateCard = () => {
       return `rgba(220, 38, 127, ${opacity})`;
     }
 
-    if (activeGroup === 'alternate') {
-      if (cellData.region && !cellData.name) {
-        return `rgba(${regionColors[cellData.region]}, 0.7)`;
-      } else {
-        const opacity = 0.3 + (cellData.total / maxTotal) * 0.4;
-        return `rgba(${regionColors[cellData.region]}, ${opacity})`;
-      }
-    }
+    if (activeGroup === 'alternate')
+      return `rgba(${regionColors[cellData.region]}, 0.7)`;
   };
 
   const formatLabel = (ctx, activeGroup) => {
