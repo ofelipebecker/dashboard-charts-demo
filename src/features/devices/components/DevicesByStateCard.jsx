@@ -76,16 +76,18 @@ const DevicesByStateCard = () => {
         ];
       };
 
+      if (activeGroup === 'default') {
+        const stateData = item.children[0];
+        const stateDevices = stateData.devices;
+
+        return generateTooltipBody(stateDevices);
+      }
+
       if (activeGroup === 'alternate') {
         const regionStatesData = item.children;
         const regionDevices = getRegionsTotals(regionStatesData);
 
         return generateTooltipBody(regionDevices);
-      } else {
-        const stateData = item.children[0];
-        const stateDevices = stateData.devices;
-
-        return generateTooltipBody(stateDevices);
       }
     },
   });
