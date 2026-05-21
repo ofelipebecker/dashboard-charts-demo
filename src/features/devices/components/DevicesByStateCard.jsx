@@ -12,21 +12,22 @@ const DevicesByStateCard = () => {
   };
 
   const getBackgroundColor = (ctx, activeGroup, maxTotal) => {
-    if (!ctx.raw || !ctx.raw._data) return `rgba(220, 38, 127, 0.5)`;
+    const treemapCell = ctx.raw;
+    const cellData = treemapCell?._data;
 
-    const item = ctx.raw._data;
+    if (!cellData) return `rgba(220, 38, 127, 0.5)`;
 
     if (activeGroup === 'default') {
-      const opacity = 0.3 + (item.total / maxTotal) * 0.9;
+      const opacity = 0.3 + (cellData.total / maxTotal) * 0.9;
       return `rgba(220, 38, 127, ${opacity})`;
     }
 
     if (activeGroup === 'alternate') {
-      if (item.region && !item.name) {
-        return `rgba(${regionColors[item.region]}, 0.7)`;
+      if (cellData.region && !cellData.name) {
+        return `rgba(${regionColors[cellData.region]}, 0.7)`;
       } else {
-        const opacity = 0.3 + (item.total / maxTotal) * 0.4;
-        return `rgba(${regionColors[item.region]}, ${opacity})`;
+        const opacity = 0.3 + (cellData.total / maxTotal) * 0.4;
+        return `rgba(${regionColors[cellData.region]}, ${opacity})`;
       }
     }
   };
