@@ -57,11 +57,11 @@ const DevicesByStateCard = () => {
 
       const getRegionsTotals = (regionStatesData) => {
         return regionStatesData.reduce(
-          (acc, state) => ({
-            desktops: acc.desktops + state.devices.desktops,
-            laptops: acc.laptops + state.devices.laptops,
-            smartphones: acc.smartphones + state.devices.smartphones,
-            tablets: acc.tablets + state.devices.tablets,
+          (acc, stateData) => ({
+            desktops: acc.desktops + stateData.devices.desktops,
+            laptops: acc.laptops + stateData.devices.laptops,
+            smartphones: acc.smartphones + stateData.devices.smartphones,
+            tablets: acc.tablets + stateData.devices.tablets,
           }),
           { desktops: 0, laptops: 0, smartphones: 0, tablets: 0 }
         );
