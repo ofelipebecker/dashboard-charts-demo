@@ -15,7 +15,7 @@ export const devicesByStateChartData = devicesByStateData.map((state) => ({
 
 const colors = {
   main: '170, 68, 153', // #AA4499
-  groups: {
+  regions: {
     North: '100, 143, 255', // #648FFF
     Northeast: '120, 94, 240', // #785EF0
     Southeast: '220, 38, 127', // #DC267F
@@ -50,7 +50,7 @@ const setCellBgColor = (ctx, activeGroup) => {
     return `rgba(${colors.main}, ${opacity})`;
   }
 
-  if (isGroupedByRegion) return `rgba(${colors.groups[cellData.region]}, 0.7)`;
+  if (isGroupedByRegion) return `rgba(${colors.regions[cellData.region]}, 0.7)`;
 };
 
 const formatLabel = (ctx) => {
