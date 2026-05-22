@@ -3,8 +3,7 @@ import TreemapChart from '../../../components/TreemapChart';
 import {
   devicesByStateChartData,
   devicesByStateChartCallbacks,
-  groups,
-  buttonText,
+  devicesByStateChartGroupingConfig,
 } from '../utils/devicesByStateChartConfig';
 
 const DevicesByStateCard = () => {
@@ -18,8 +17,7 @@ const DevicesByStateCard = () => {
     <TreemapChart
       rawChartData={devicesByStateChartData}
       chartCallbacks={devicesByStateChartCallbacks}
-      groups={groups}
-      buttonText={buttonText}
+      groupingConfig={devicesByStateChartGroupingConfig}
     />
   );
 

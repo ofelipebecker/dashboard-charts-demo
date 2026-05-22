@@ -7,8 +7,9 @@ import { TreemapController, TreemapElement } from 'chartjs-chart-treemap';
 
 ChartJSCore.register(TreemapController, TreemapElement, Tooltip, Legend);
 
-const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
+const TreemapChart = ({ rawChartData, chartCallbacks, groupingConfig }) => {
   const { formatLabel, getTooltipCallbacks, setCellBgColor } = chartCallbacks;
+  const { groups, buttonText } = groupingConfig;
 
   const chartRef = useRef(null);
   const [activeGroup, setActiveGroup] = useState('default');
