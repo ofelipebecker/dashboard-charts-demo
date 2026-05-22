@@ -119,10 +119,8 @@ const DevicesByStateCard = () => {
       chart={
         <TreemapChart
           chartConfig={devicesByStateChartData}
-          formatLabel={formatLabel}
+          chartCallbacks={{ formatLabel, getTooltipCallbacks, setCellBgColor }}
           groups={groups}
-          setCellBgColor={setCellBgColor}
-          getTooltipCallbacks={getTooltipCallbacks}
           buttonText={buttonText}
           showToggle={true}
         />

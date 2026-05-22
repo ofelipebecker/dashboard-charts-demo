@@ -9,14 +9,14 @@ ChartJSCore.register(TreemapController, TreemapElement, Tooltip, Legend);
 
 const TreemapChart = ({
   chartConfig,
-  formatLabel,
+  chartCallbacks,
   groups,
-  setCellBgColor,
-  getTooltipCallbacks,
   buttonText,
   showToggle,
 }) => {
   const { chartData } = chartConfig;
+  const { formatLabel, getTooltipCallbacks, setCellBgColor } = chartCallbacks;
+
   const chartRef = useRef(null);
   const [activeGroup, setActiveGroup] = useState('default');
 
