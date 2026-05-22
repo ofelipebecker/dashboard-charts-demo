@@ -1,6 +1,6 @@
 import CommonCard from '../../../components/CommonCard';
 import TreemapChart from '../../../components/TreemapChart';
-import { devicesByStateChartConfig } from '../utils/devicesByStateChartConfig';
+import { devicesByStateChartData } from '../utils/devicesByStateChartConfig';
 
 const DevicesByStateCard = () => {
   const colors = {
@@ -118,7 +118,7 @@ const DevicesByStateCard = () => {
       cardTitles={cardTitles}
       chart={
         <TreemapChart
-          chartConfig={devicesByStateChartConfig}
+          chartConfig={devicesByStateChartData}
           formatLabel={formatLabel}
           groups={groups}
           setCellBgColor={setCellBgColor}
