@@ -18,7 +18,6 @@ const DevicesByStateCard = () => {
     const treemapCell = ctx.raw;
     const cellData = treemapCell?._data;
     const isGroupedByRegion = activeGroup === 'alternate';
-    const colorX = colors.main;
 
     if (!cellData) return `rgba(${colors.main}, 0.5)`;
 
