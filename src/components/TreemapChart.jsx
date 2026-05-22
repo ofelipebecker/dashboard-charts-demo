@@ -78,12 +78,8 @@ const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
     },
   };
 
-  const setButtonText = () => {
-    const text =
-      activeGroup === 'default' ? buttonText.default : buttonText.alternate;
-
-    return text;
-  };
+  const buttonLabel =
+    activeGroup === 'default' ? buttonText.default : buttonText.alternate;
 
   return (
     <div>
@@ -93,7 +89,7 @@ const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
         size='lg'
         variant='warning'
       >
-        {setButtonText()}
+        {buttonLabel}
       </Button>
       <div style={{ width: '100%', minHeight: '400px', position: 'relative' }}>
         <BaseChartComponent
