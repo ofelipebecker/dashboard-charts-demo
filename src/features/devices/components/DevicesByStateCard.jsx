@@ -122,7 +122,7 @@ const DevicesByStateCard = () => {
           chartCallbacks={{ formatLabel, getTooltipCallbacks, setCellBgColor }}
           groups={groups}
           buttonText={buttonText}
-          showToggle={true}
+          hasToggleGroupFeat={true}
         />
       }
     />

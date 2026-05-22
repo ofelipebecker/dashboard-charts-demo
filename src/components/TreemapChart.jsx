@@ -12,7 +12,7 @@ const TreemapChart = ({
   chartCallbacks,
   groups,
   buttonText,
-  showToggle,
+  hasToggleGroupFeat,
 }) => {
   const { formatLabel, getTooltipCallbacks, setCellBgColor } = chartCallbacks;
 
@@ -93,7 +93,7 @@ const TreemapChart = ({
 
   return (
     <div>
-      {showToggle && (
+      {hasToggleGroupFeat && (
         <Button
           className='my-4'
           onClick={handleToggle}
