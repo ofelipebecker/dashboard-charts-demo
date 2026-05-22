@@ -35,8 +35,8 @@ const DevicesByStateCard = () => {
   const getTooltipCallbacks = (activeGroup) => ({
     title: (ctx) => {
       const cellData = ctx[0].raw._data;
-
-      if (activeGroup === 'alternate' && cellData.region) {
+      
+      if (activeGroup === 'alternate') {
         return `Region: ${cellData.region} (Total: ${cellData.total} devices)`;
       }
 
