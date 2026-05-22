@@ -86,10 +86,10 @@ const TreemapChart = ({
   };
 
   const getButtonText = () => {
-    if (typeof buttonText === 'string') return buttonText;
-    return activeGroup === 'default'
-      ? buttonText.default
-      : buttonText.alternate;
+    const text =
+      activeGroup === 'default' ? buttonText.default : buttonText.alternate;
+
+    return text;
   };
 
   return (
