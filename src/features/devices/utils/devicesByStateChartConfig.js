@@ -13,5 +13,4 @@ export const devicesByStateChartConfig = {
       tablets: state.devices.tablets,
     },
   })),
-  baseColor: '220, 38, 127',
 };

@@ -3,27 +3,32 @@ import TreemapChart from '../../../components/TreemapChart';
 import { devicesByStateChartConfig } from '../utils/devicesByStateChartConfig';
 
 const DevicesByStateCard = () => {
-  const regionColors = {
-    North: '100, 143, 255',
-    Northeast: '120, 94, 240',
-    Southeast: '220, 38, 127',
-    South: '254, 97, 0',
-    'Central-West': '255, 176, 0',
+  const colors = {
+    main: '170, 68, 153', // #AA4499
+    groups: {
+      North: '100, 143, 255', // #648FFF
+      Northeast: '120, 94, 240', // #785EF0
+      Southeast: '220, 38, 127', // #DC267F
+      South: '254, 97, 0', // #FE6100
+      'Central-West': '255, 176, 0', // #FFB000
+    },
   };
 
   const getBackgroundColor = (ctx, activeGroup, maxTotal) => {
     const treemapCell = ctx.raw;
     const cellData = treemapCell?._data;
     const isGroupedByRegion = activeGroup === 'alternate';
+    const colorX = colors.main;
 
-    if (!cellData) return `rgba(220, 38, 127, 0.5)`;
+    if (!cellData) return `rgba(${colors.main}, 0.5)`;
 
     if (!isGroupedByRegion) {
       const opacity = 0.3 + (cellData.total / maxTotal) * 0.9;
-      return `rgba(220, 38, 127, ${opacity})`;
+      return `rgba(${colors.main}, ${opacity})`;
     }
 
-    if (isGroupedByRegion) return `rgba(${regionColors[cellData.region]}, 0.7)`;
+    if (isGroupedByRegion)
+      return `rgba(${colors.groups[cellData.region]}, 0.7)`;
   };
 
   const formatLabel = (ctx) => {
