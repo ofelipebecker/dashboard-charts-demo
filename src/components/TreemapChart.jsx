@@ -7,13 +7,13 @@ import { TreemapController, TreemapElement } from 'chartjs-chart-treemap';
 
 ChartJSCore.register(TreemapController, TreemapElement, Tooltip, Legend);
 
-const TreemapChart = ({ chartData, chartCallbacks, groups, buttonText }) => {
+const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
   const { formatLabel, getTooltipCallbacks, setCellBgColor } = chartCallbacks;
 
   const chartRef = useRef(null);
   const [activeGroup, setActiveGroup] = useState('default');
 
-  const maxTotal = Math.max(...chartData.map((item) => item.total));
+  const maxTotal = Math.max(...rawChartData.map((item) => item.total));
 
   const handleToggle = () => {
     if (!chartRef.current) return;
@@ -29,7 +29,7 @@ const TreemapChart = ({ chartData, chartCallbacks, groups, buttonText }) => {
   const chartJsData = {
     datasets: [
       {
-        tree: chartData,
+        tree: rawChartData,
         key: 'total',
         groups: groups[activeGroup],
         backgroundColor: (ctx) => setCellBgColor(ctx, activeGroup, maxTotal),
