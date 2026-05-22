@@ -58,7 +58,7 @@ const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
     ],
   };
 
-  const options = {
+  const globalChartOptions = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
@@ -100,7 +100,7 @@ const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
           ref={chartRef}
           type='treemap'
           data={datasetConfig}
-          options={options}
+          options={globalChartOptions}
         />
       </div>
     </div>
