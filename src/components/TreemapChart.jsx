@@ -7,13 +7,7 @@ import { TreemapController, TreemapElement } from 'chartjs-chart-treemap';
 
 ChartJSCore.register(TreemapController, TreemapElement, Tooltip, Legend);
 
-const TreemapChart = ({
-  chartData,
-  chartCallbacks,
-  groups,
-  buttonText,
-  hasToggleGroupFeat,
-}) => {
+const TreemapChart = ({ chartData, chartCallbacks, groups, buttonText }) => {
   const { formatLabel, getTooltipCallbacks, setCellBgColor } = chartCallbacks;
 
   const chartRef = useRef(null);
@@ -93,16 +87,14 @@ const TreemapChart = ({
 
   return (
     <div>
-      {hasToggleGroupFeat && (
-        <Button
-          className='my-4'
-          onClick={handleToggle}
-          size='lg'
-          variant='warning'
-        >
-          {setButtonText()}
-        </Button>
-      )}
+      <Button
+        className='my-4'
+        onClick={handleToggle}
+        size='lg'
+        variant='warning'
+      >
+        {setButtonText()}
+      </Button>
       <div style={{ width: '100%', minHeight: '400px', position: 'relative' }}>
         <BaseChartComponent
           ref={chartRef}
