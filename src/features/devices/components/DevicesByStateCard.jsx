@@ -14,7 +14,7 @@ const DevicesByStateCard = () => {
     },
   };
 
-  const getBackgroundColor = (ctx, activeGroup, maxTotal) => {
+  const setCellBgColor = (ctx, activeGroup, maxTotal) => {
     const treemapCell = ctx.raw;
     const cellData = treemapCell?._data;
     const isGroupedByRegion = activeGroup === 'alternate';
@@ -121,7 +121,7 @@ const DevicesByStateCard = () => {
           chartConfig={devicesByStateChartConfig}
           formatLabel={formatLabel}
           groups={groups}
-          getBackgroundColor={getBackgroundColor}
+          setCellBgColor={setCellBgColor}
           getTooltipCallbacks={getTooltipCallbacks}
           buttonText={buttonText}
           showToggle={true}

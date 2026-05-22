@@ -11,7 +11,7 @@ const TreemapChart = ({
   chartConfig,
   formatLabel,
   groups,
-  getBackgroundColor,
+  setCellBgColor,
   getTooltipCallbacks,
   buttonText,
   showToggle,
@@ -39,8 +39,7 @@ const TreemapChart = ({
         tree: chartData,
         key: 'total',
         groups: groups[activeGroup],
-        backgroundColor: (ctx) =>
-          getBackgroundColor(ctx, activeGroup, maxTotal),
+        backgroundColor: (ctx) => setCellBgColor(ctx, activeGroup, maxTotal),
         borderRadius: 4,
         borderWidth: 1,
         captions: {
