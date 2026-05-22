@@ -14,16 +14,16 @@ const DevicesByStateCard = () => {
   const getBackgroundColor = (ctx, activeGroup, maxTotal) => {
     const treemapCell = ctx.raw;
     const cellData = treemapCell?._data;
+    const isGroupedByRegion = activeGroup === 'alternate';
 
     if (!cellData) return `rgba(220, 38, 127, 0.5)`;
 
-    if (activeGroup === 'default') {
+    if (!isGroupedByRegion) {
       const opacity = 0.3 + (cellData.total / maxTotal) * 0.9;
       return `rgba(220, 38, 127, ${opacity})`;
     }
 
-    if (activeGroup === 'alternate')
-      return `rgba(${regionColors[cellData.region]}, 0.7)`;
+    if (isGroupedByRegion) return `rgba(${regionColors[cellData.region]}, 0.7)`;
   };
 
   const formatLabel = (ctx) => {
@@ -35,8 +35,9 @@ const DevicesByStateCard = () => {
   const getTooltipCallbacks = (activeGroup) => ({
     title: (ctx) => {
       const cellData = ctx[0].raw._data;
-      
-      if (activeGroup === 'alternate') {
+      const isGroupedByRegion = activeGroup === 'alternate';
+
+      if (isGroupedByRegion) {
         return `Region: ${cellData.region} (Total: ${cellData.total} devices)`;
       }
 
@@ -47,6 +48,7 @@ const DevicesByStateCard = () => {
     },
     afterBody: (ctx) => {
       const cellData = ctx[0].raw._data;
+      const isGroupedByRegion = activeGroup === 'alternate';
 
       const getRegionsTotals = (regionStatesData) => {
         return regionStatesData.reduce(
@@ -69,13 +71,13 @@ const DevicesByStateCard = () => {
         ];
       };
 
-      if (activeGroup === 'default') {
+      if (!isGroupedByRegion) {
         const stateDevices = cellData.children[0].devices;
 
         return generateTooltipBody(stateDevices);
       }
 
-      if (activeGroup === 'alternate') {
+      if (isGroupedByRegion) {
         const regionStatesData = cellData.children;
         const regionDevices = getRegionsTotals(regionStatesData);
 
