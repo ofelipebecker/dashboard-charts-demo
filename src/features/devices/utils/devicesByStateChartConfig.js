@@ -38,7 +38,7 @@ const maxTotal = Math.max(
   ...devicesByStateChartData.map((state) => state.total)
 );
 
-export const treemapCallbacks = {
+export const devicesByStateChartCallbacks = {
   setCellBgColor: (ctx, activeGroup) => {
     const treemapCell = ctx.raw;
     const cellData = treemapCell?._data;

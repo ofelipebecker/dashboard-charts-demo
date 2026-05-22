@@ -2,9 +2,9 @@ import CommonCard from '../../../components/CommonCard';
 import TreemapChart from '../../../components/TreemapChart';
 import {
   devicesByStateChartData,
-  buttonText,
+  devicesByStateChartCallbacks,
   groups,
-  treemapCallbacks,
+  buttonText,
 } from '../utils/devicesByStateChartConfig';
 
 const DevicesByStateCard = () => {
@@ -17,7 +17,7 @@ const DevicesByStateCard = () => {
   const devicesByStateChart = (
     <TreemapChart
       rawChartData={devicesByStateChartData}
-      chartCallbacks={treemapCallbacks}
+      chartCallbacks={devicesByStateChartCallbacks}
       groups={groups}
       buttonText={buttonText}
     />
