@@ -1,7 +1,7 @@
 import { useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
-import { Chart } from 'react-chartjs-2';
+import { Chart as BaseChartComponent } from 'react-chartjs-2';
 import { Chart as ChartJSCore, Tooltip, Legend } from 'chart.js';
 import { TreemapController, TreemapElement } from 'chartjs-chart-treemap';
 
@@ -105,7 +105,7 @@ const TreemapChart = ({
         </Button>
       )}
       <div style={{ width: '100%', minHeight: '400px', position: 'relative' }}>
-        <Chart
+        <BaseChartComponent
           ref={chartRef}
           type='treemap'
           data={chartJsData}
