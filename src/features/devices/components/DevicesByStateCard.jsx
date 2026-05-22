@@ -46,7 +46,7 @@ const DevicesByStateCard = () => {
       return '';
     },
     afterBody: (ctx) => {
-      const item = ctx[0].raw._data;
+      const cellData = ctx[0].raw._data;
 
       const getRegionsTotals = (regionStatesData) => {
         return regionStatesData.reduce(
@@ -70,13 +70,13 @@ const DevicesByStateCard = () => {
       };
 
       if (activeGroup === 'default') {
-        const stateDevices = item.children[0].devices;
+        const stateDevices = cellData.children[0].devices;
 
         return generateTooltipBody(stateDevices);
       }
 
       if (activeGroup === 'alternate') {
-        const regionStatesData = item.children;
+        const regionStatesData = cellData.children;
         const regionDevices = getRegionsTotals(regionStatesData);
 
         return generateTooltipBody(regionDevices);
