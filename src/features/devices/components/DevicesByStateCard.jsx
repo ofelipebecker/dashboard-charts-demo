@@ -34,13 +34,13 @@ const DevicesByStateCard = () => {
 
   const getTooltipCallbacks = (activeGroup) => ({
     title: (ctx) => {
-      const item = ctx[0].raw._data;
+      const cellData = ctx[0].raw._data;
 
-      if (activeGroup === 'alternate' && item.region) {
-        return `Region: ${item.region} (Total: ${item.total} devices)`;
+      if (activeGroup === 'alternate' && cellData.region) {
+        return `Region: ${cellData.region} (Total: ${cellData.total} devices)`;
       }
 
-      return `${item.children[0].name}: ${item.total} devices`;
+      return `${cellData.children[0].name}: ${cellData.total} devices`;
     },
     label: function suppressTooltipLabel() {
       return '';
