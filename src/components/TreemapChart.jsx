@@ -2,10 +2,10 @@ import { useRef, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 
 import { Chart } from 'react-chartjs-2';
-import { Chart as ChartJS, Tooltip, Legend } from 'chart.js';
+import { Chart as ChartJSCore, Tooltip, Legend } from 'chart.js';
 import { TreemapController, TreemapElement } from 'chartjs-chart-treemap';
 
-ChartJS.register(TreemapController, TreemapElement, Tooltip, Legend);
+ChartJSCore.register(TreemapController, TreemapElement, Tooltip, Legend);
 
 const TreemapChart = ({
   chartConfig,

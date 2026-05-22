@@ -3,7 +3,7 @@ import { memo } from 'react';
 import { Bar } from 'react-chartjs-2';
 import {
   type ChartOptions,
-  Chart as ChartJS,
+  Chart as ChartJSCore,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -15,7 +15,7 @@ import {
 import 'chartjs-adapter-dayjs-4';
 import dayjs from 'dayjs';
 
-ChartJS.register(
+ChartJSCore.register(
   CategoryScale,
   LinearScale,
   BarElement,

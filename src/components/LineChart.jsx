@@ -2,7 +2,7 @@ import { memo } from 'react';
 
 import { Line } from 'react-chartjs-2';
 import {
-  Chart as ChartJS,
+  Chart as ChartJSCore,
   CategoryScale,
   LinearScale,
   PointElement,
@@ -15,14 +15,14 @@ import {
 import 'chartjs-adapter-dayjs-4';
 import dayjs from 'dayjs';
 
-ChartJS.register(
+ChartJSCore.register(
   CategoryScale,
   LinearScale,
   PointElement,
   LineElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 );
 
 const LineChart = ({ period, chartConfig }) => {
@@ -40,7 +40,7 @@ const LineChart = ({ period, chartConfig }) => {
     const startDate = currentDate.subtract(monthsCount - 1, 'month');
 
     return Array.from({ length: monthsCount }, (_, index) =>
-      startDate.add(index, 'month').format('MMM/YYYY'),
+      startDate.add(index, 'month').format('MMM/YYYY')
     );
   };
 
@@ -50,7 +50,7 @@ const LineChart = ({ period, chartConfig }) => {
     const slicedData = chartData.slice(-monthsCount);
 
     return datasetLabels.map((_, categoryIndex) =>
-      slicedData.map((monthData) => monthData[categoryIndex]),
+      slicedData.map((monthData) => monthData[categoryIndex])
     );
   };
 
