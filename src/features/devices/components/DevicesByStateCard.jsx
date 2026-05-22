@@ -90,6 +90,16 @@ const DevicesByStateCard = () => {
       'Demo: Device distribution of a hypothetical company across Brazilian states and regions.',
   };
 
+  const groups = {
+    default: ['abbreviation'],
+    alternate: ['region', 'abbreviation'],
+  };
+
+  const buttonText = {
+    default: 'Show Regions',
+    alternate: 'Hide Regions',
+  };
+
   return (
     <CommonCard
       cardTitles={cardTitles}
@@ -97,16 +107,10 @@ const DevicesByStateCard = () => {
         <TreemapChart
           chartConfig={devicesByStateChartConfig}
           formatLabel={formatLabel}
-          groups={{
-            default: ['abbreviation'],
-            alternate: ['region', 'abbreviation'],
-          }}
+          groups={groups}
           getBackgroundColor={getBackgroundColor}
           getTooltipCallbacks={getTooltipCallbacks}
-          buttonText={{
-            default: 'Show Regions',
-            alternate: 'Hide Regions',
-          }}
+          buttonText={buttonText}
           showToggle={true}
         />
       }
