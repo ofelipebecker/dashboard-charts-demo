@@ -42,7 +42,7 @@ const DevicesByStateCard = () => {
 
       return `${cellData.children[0].name}: ${cellData.total} devices`;
     },
-    label: function suppressTooltipLabel() {
+    label: function hideTooltipColorBox() {
       return '';
     },
     afterBody: (ctx) => {
