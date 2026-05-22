@@ -85,7 +85,7 @@ const TreemapChart = ({
     },
   };
 
-  const getButtonText = () => {
+  const setButtonText = () => {
     const text =
       activeGroup === 'default' ? buttonText.default : buttonText.alternate;
 
@@ -101,7 +101,7 @@ const TreemapChart = ({
           size='lg'
           variant='warning'
         >
-          {getButtonText()}
+          {setButtonText()}
         </Button>
       )}
       <div style={{ width: '100%', minHeight: '400px', position: 'relative' }}>
