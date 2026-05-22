@@ -26,7 +26,7 @@ const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
     setActiveGroup(newGroup);
   };
 
-  const chartJsData = {
+  const datasetConfig = {
     datasets: [
       {
         tree: rawChartData,
@@ -99,7 +99,7 @@ const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
         <BaseChartComponent
           ref={chartRef}
           type='treemap'
-          data={chartJsData}
+          data={datasetConfig}
           options={options}
         />
       </div>
