@@ -116,19 +116,16 @@ const DevicesByStateCard = () => {
     alternate: 'Hide Regions',
   };
 
-  return (
-    <CommonCard
-      cardTitles={cardTitles}
-      chart={
-        <TreemapChart
-          rawChartData={devicesByStateChartData}
-          chartCallbacks={{ formatLabel, getTooltipCallbacks, setCellBgColor }}
-          groups={groups}
-          buttonText={buttonText}
-        />
-      }
+  const devicesByStateChart = (
+    <TreemapChart
+      rawChartData={devicesByStateChartData}
+      chartCallbacks={{ formatLabel, getTooltipCallbacks, setCellBgColor }}
+      groups={groups}
+      buttonText={buttonText}
     />
   );
+
+  return <CommonCard cardTitles={cardTitles} chart={devicesByStateChart} />;
 };
 
 export default DevicesByStateCard;
