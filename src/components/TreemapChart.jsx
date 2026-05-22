@@ -20,9 +20,7 @@ const TreemapChart = ({
   const chartRef = useRef(null);
   const [activeGroup, setActiveGroup] = useState('default');
 
-  const maxTotal = Math.max(
-    ...chartData.map((item) => item.total || item.value)
-  );
+  const maxTotal = Math.max(...chartData.map((item) => item.total));
 
   const handleToggle = () => {
     if (!chartRef.current) return;
