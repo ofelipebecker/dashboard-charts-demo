@@ -50,16 +50,22 @@ const DevicesByStateCard = () => {
       const cellData = ctx[0].raw._data;
       const isGroupedByRegion = activeGroup === 'alternate';
 
+      const sumDeviceTotals = (acc, stateData) => ({
+        desktops: acc.desktops + stateData.devices.desktops,
+        laptops: acc.laptops + stateData.devices.laptops,
+        smartphones: acc.smartphones + stateData.devices.smartphones,
+        tablets: acc.tablets + stateData.devices.tablets,
+      });
+
+      const initialDeviceTotals = {
+        desktops: 0,
+        laptops: 0,
+        smartphones: 0,
+        tablets: 0,
+      };
+
       const getRegionsTotals = (regionStatesData) => {
-        return regionStatesData.reduce(
-          (acc, stateData) => ({
-            desktops: acc.desktops + stateData.devices.desktops,
-            laptops: acc.laptops + stateData.devices.laptops,
-            smartphones: acc.smartphones + stateData.devices.smartphones,
-            tablets: acc.tablets + stateData.devices.tablets,
-          }),
-          { desktops: 0, laptops: 0, smartphones: 0, tablets: 0 }
-        );
+        return regionStatesData.reduce(sumDeviceTotals, initialDeviceTotals);
       };
 
       const generateTooltipBody = (devices) => {
