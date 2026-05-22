@@ -8,13 +8,12 @@ import { TreemapController, TreemapElement } from 'chartjs-chart-treemap';
 ChartJSCore.register(TreemapController, TreemapElement, Tooltip, Legend);
 
 const TreemapChart = ({
-  chartConfig,
+  chartData,
   chartCallbacks,
   groups,
   buttonText,
   showToggle,
 }) => {
-  const { chartData } = chartConfig;
   const { formatLabel, getTooltipCallbacks, setCellBgColor } = chartCallbacks;
 
   const chartRef = useRef(null);

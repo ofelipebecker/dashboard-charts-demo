@@ -118,7 +118,7 @@ const DevicesByStateCard = () => {
       cardTitles={cardTitles}
       chart={
         <TreemapChart
-          chartConfig={devicesByStateChartData}
+          chartData={devicesByStateChartData}
           chartCallbacks={{ formatLabel, getTooltipCallbacks, setCellBgColor }}
           groups={groups}
           buttonText={buttonText}
