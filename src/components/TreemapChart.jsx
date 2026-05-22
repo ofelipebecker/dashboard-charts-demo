@@ -16,11 +16,7 @@ const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
   const handleToggle = () => {
     if (!chartRef.current) return;
 
-    const chart = chartRef.current;
     const newGroup = activeGroup === 'default' ? 'alternate' : 'default';
-
-    chart.data.datasets[0].groups = groups[newGroup];
-    chart.update();
     setActiveGroup(newGroup);
   };
 
