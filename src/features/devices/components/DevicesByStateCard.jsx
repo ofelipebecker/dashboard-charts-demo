@@ -14,7 +14,11 @@ const DevicesByStateCard = () => {
     },
   };
 
-  const setCellBgColor = (ctx, activeGroup, maxTotal) => {
+  const maxTotal = Math.max(
+    ...devicesByStateChartData.map((state) => state.total)
+  );
+
+  const setCellBgColor = (ctx, activeGroup) => {
     const treemapCell = ctx.raw;
     const cellData = treemapCell?._data;
     const isGroupedByRegion = activeGroup === 'alternate';

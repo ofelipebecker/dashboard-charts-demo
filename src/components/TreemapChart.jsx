@@ -13,8 +13,6 @@ const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
   const chartRef = useRef(null);
   const [activeGroup, setActiveGroup] = useState('default');
 
-  const maxTotal = Math.max(...rawChartData.map((item) => item.total));
-
   const handleToggle = () => {
     if (!chartRef.current) return;
 
@@ -32,7 +30,7 @@ const TreemapChart = ({ rawChartData, chartCallbacks, groups, buttonText }) => {
         tree: rawChartData,
         key: 'total',
         groups: groups[activeGroup],
-        backgroundColor: (ctx) => setCellBgColor(ctx, activeGroup, maxTotal),
+        backgroundColor: (ctx) => setCellBgColor(ctx, activeGroup),
         borderRadius: 4,
         borderWidth: 1,
         captions: {
