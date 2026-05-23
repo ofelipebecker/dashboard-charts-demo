@@ -143,6 +143,15 @@ export const devicesByStateChartCallbacks = {
 
         return generateTooltipBody(stateDevices);
       }
+
+      if (isGroupedByRegion) {
+        const regionStatesData = (cellData.children ?? [])
+          .map((child) => child._data)
+          .filter((d): d is DevicesByStateChartData => !!d);
+
+        const regionDevices = getRegionsTotals(regionStatesData);
+        return generateTooltipBody(regionDevices);
+      }
     },
   }),
 };
