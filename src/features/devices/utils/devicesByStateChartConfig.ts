@@ -67,4 +67,12 @@ export const devicesByStateChartCallbacks = {
     if (isGroupedByRegion)
       return `rgba(${colors.regions[cellData.region]}, 0.7)`;
   },
+  formatLabel: (ctx: TreemapScriptableContext) => {
+    const treemapCell = ctx.raw as TreemapDataPointWithData;
+    const cellData = treemapCell?._data;
+
+    if (!cellData) return ['', 0];
+
+    return [cellData.abbreviation, cellData.total];
+  },
 };
