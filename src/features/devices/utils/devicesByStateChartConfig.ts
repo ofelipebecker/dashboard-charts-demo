@@ -124,6 +124,15 @@ export const devicesByStateChartCallbacks = {
       ) => {
         return regionStatesData.reduce(sumDeviceTotals, initialDeviceTotals);
       };
+
+      const generateTooltipBody = (devices: Omit<Devices, 'total'>) => {
+        return [
+          `• Desktops: ${devices.desktops};`,
+          `• Laptops: ${devices.laptops};`,
+          `• Smartphones: ${devices.smartphones};`,
+          `• Tablets: ${devices.tablets};`,
+        ];
+      };
     },
   }),
 };
