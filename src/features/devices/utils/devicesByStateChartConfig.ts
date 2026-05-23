@@ -2,6 +2,7 @@ import {
   type DevicesByStateData,
   devicesByStateData,
 } from './devicesByStateData.ts';
+import type { TooltipItem } from 'chart.js';
 import {
   type TreemapDataPoint,
   type TreemapScriptableContext,
@@ -75,5 +76,23 @@ export const devicesByStateChartCallbacks = {
 
     return [cellData.abbreviation, cellData.total];
   },
-  getTooltipCallbacks: (activeGroup: 'default' | 'alternate') => ({}),
+  getTooltipCallbacks: (activeGroup: 'default' | 'alternate') => ({
+    title: (ctx: TooltipItem<'treemap'>[]) => {
+      const treemapCell = ctx[0].raw as TreemapDataPointWithData;
+      const cellData = treemapCell._data;
+      if (!cellData) return '';
+
+      const isGroupedByRegion = activeGroup === 'alternate';
+
+      if (isGroupedByRegion) {
+        return `Region: ${cellData.region} (Total: ${cellData.total} devices)`;
+      }
+
+      const firstChild = cellData.children?.[0]?._data;
+
+      if (!firstChild) return '';
+
+      return `${firstChild.name}: ${cellData.total} devices`;
+    },
+  }),
 };
