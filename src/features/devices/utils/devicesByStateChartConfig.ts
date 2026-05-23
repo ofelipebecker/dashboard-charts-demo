@@ -101,6 +101,9 @@ export const devicesByStateChartCallbacks = {
     afterBody: (ctx: TooltipItem<'treemap'>[]) => {
       const treemapCell = ctx[0].raw as TreemapDataPointWithData;
       const cellData = treemapCell._data;
+      if (!cellData) return [];
+
+      const isGroupedByRegion = activeGroup === 'alternate';
 
       const sumDeviceTotals = (
         acc: Omit<Devices, 'total'>,
@@ -133,6 +136,13 @@ export const devicesByStateChartCallbacks = {
           `• Tablets: ${devices.tablets};`,
         ];
       };
+
+      if (!isGroupedByRegion) {
+        const firstChild = cellData.children?.[0]?._data;
+        const stateDevices = firstChild?.devices ?? initialDeviceTotals;
+
+        return generateTooltipBody(stateDevices);
+      }
     },
   }),
 };
