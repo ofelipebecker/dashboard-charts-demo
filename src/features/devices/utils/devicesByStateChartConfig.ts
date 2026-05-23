@@ -94,5 +94,8 @@ export const devicesByStateChartCallbacks = {
 
       return `${firstChild.name}: ${cellData.total} devices`;
     },
+    label: function hideTooltipColorBox() {
+      return '';
+    },
   }),
 };
