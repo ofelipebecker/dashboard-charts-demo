@@ -75,4 +75,5 @@ export const devicesByStateChartCallbacks = {
 
     return [cellData.abbreviation, cellData.total];
   },
+  getTooltipCallbacks: (activeGroup: 'default' | 'alternate') => ({}),
 };
