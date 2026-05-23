@@ -97,5 +97,9 @@ export const devicesByStateChartCallbacks = {
     label: function hideTooltipColorBox() {
       return '';
     },
+    afterBody: (ctx: TooltipItem<'treemap'>[]) => {
+      const treemapCell = ctx[0].raw as TreemapDataPointWithData;
+      const cellData = treemapCell._data;
+    },
   }),
 };
