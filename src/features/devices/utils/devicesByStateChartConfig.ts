@@ -1,4 +1,5 @@
 import {
+  type Devices,
   type DevicesByStateData,
   devicesByStateData,
 } from './devicesByStateData.ts';
@@ -100,6 +101,29 @@ export const devicesByStateChartCallbacks = {
     afterBody: (ctx: TooltipItem<'treemap'>[]) => {
       const treemapCell = ctx[0].raw as TreemapDataPointWithData;
       const cellData = treemapCell._data;
+
+      const sumDeviceTotals = (
+        acc: Omit<Devices, 'total'>,
+        stateData: DevicesByStateChartData
+      ) => ({
+        desktops: acc.desktops + stateData.devices.desktops,
+        laptops: acc.laptops + stateData.devices.laptops,
+        smartphones: acc.smartphones + stateData.devices.smartphones,
+        tablets: acc.tablets + stateData.devices.tablets,
+      });
+
+      const initialDeviceTotals = {
+        desktops: 0,
+        laptops: 0,
+        smartphones: 0,
+        tablets: 0,
+      };
+
+      const getRegionsTotals = (
+        regionStatesData: DevicesByStateChartData[]
+      ) => {
+        return regionStatesData.reduce(sumDeviceTotals, initialDeviceTotals);
+      };
     },
   }),
 };
