@@ -1,19 +1,4 @@
-export type Devices = {
-  desktops: number;
-  laptops: number;
-  smartphones: number;
-  tablets: number;
-  total: number;
-};
-
-export type DevicesByStateData = {
-  name: string;
-  abbreviation: string;
-  region: 'North' | 'Northeast' | 'Southeast' | 'South' | 'Central-West';
-  devices: Devices;
-};
-
-export const devicesByStateData: DevicesByStateData[] = [
+export const devicesByStateData = [
   {
     name: 'São Paulo',
     abbreviation: 'SP',

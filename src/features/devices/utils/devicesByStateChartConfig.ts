@@ -1,21 +1,27 @@
-import {
-  type Devices,
-  type DevicesByStateData,
-  devicesByStateData,
-} from './devicesByStateData.ts';
+import { devicesByStateData } from './devicesByStateData.ts';
 import type { TooltipItem } from 'chart.js';
 import {
   type TreemapDataPoint,
   type TreemapScriptableContext,
 } from 'chartjs-chart-treemap';
 
-export type DevicesByStateChartData = Omit<DevicesByStateData, 'devices'> & {
+type Devices = {
+  desktops: number;
+  laptops: number;
+  smartphones: number;
+  tablets: number;
+};
+
+type DevicesByStateData = {
+  name: string;
+  abbreviation: string;
+  region: 'North' | 'Northeast' | 'Southeast' | 'South' | 'Central-West';
   total: number;
-  devices: Omit<DevicesByStateData['devices'], 'total'>;
+  devices: Devices;
 };
 
 type TreemapDataPointWithData = TreemapDataPoint & {
-  _data?: DevicesByStateChartData & {
+  _data?: DevicesByStateData & {
     children?: TreemapDataPointWithData[];
     label?: string;
     path?: string;
@@ -49,17 +55,6 @@ export const devicesByStateChartData = devicesByStateData.map((state) => ({
 const maxTotal = Math.max(
   ...devicesByStateChartData.map((state) => state.total)
 );
-
-export const devicesByStateChartGroupingConfig = {
-  buttonText: {
-    default: 'Show Regions',
-    alternate: 'Hide Regions',
-  },
-  groups: {
-    default: ['abbreviation'],
-    alternate: ['region', 'abbreviation'],
-  },
-};
 
 export const devicesByStateChartCallbacks = {
   setCellBgColor: (
@@ -117,8 +112,8 @@ export const devicesByStateChartCallbacks = {
       const isGroupedByRegion = activeGroup === 'alternate';
 
       const sumDeviceTotals = (
-        acc: Omit<Devices, 'total'>,
-        stateData: DevicesByStateChartData
+        acc: Devices,
+        stateData: DevicesByStateData
       ) => ({
         desktops: acc.desktops + stateData.devices.desktops,
         laptops: acc.laptops + stateData.devices.laptops,
@@ -133,13 +128,11 @@ export const devicesByStateChartCallbacks = {
         tablets: 0,
       };
 
-      const getRegionsTotals = (
-        regionStatesData: DevicesByStateChartData[]
-      ) => {
+      const getRegionsTotals = (regionStatesData: DevicesByStateData[]) => {
         return regionStatesData.reduce(sumDeviceTotals, initialDeviceTotals);
       };
 
-      const generateTooltipBody = (devices: Omit<Devices, 'total'>) => {
+      const generateTooltipBody = (devices: Devices) => {
         return [
           `• Desktops: ${devices.desktops};`,
           `• Laptops: ${devices.laptops};`,
@@ -158,7 +151,7 @@ export const devicesByStateChartCallbacks = {
       if (isGroupedByRegion) {
         const regionStatesData = (cellData.children ?? [])
           .map((child) => child._data)
-          .filter((d): d is DevicesByStateChartData => !!d);
+          .filter((d): d is DevicesByStateData => !!d);
 
         const regionDevices = getRegionsTotals(regionStatesData);
         return generateTooltipBody(regionDevices);
