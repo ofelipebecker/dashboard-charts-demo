@@ -20,12 +20,14 @@ type DevicesByStateData = {
   devices: Devices;
 };
 
+type DeviceDataCollection = DevicesByStateData & {
+  children?: DevicesByStateData[];
+  label?: string;
+  path?: string;
+};
+
 type TreemapDataPointWithData = TreemapDataPoint & {
-  _data?: DevicesByStateData & {
-    children?: TreemapDataPointWithData[];
-    label?: string;
-    path?: string;
-  };
+  _data?: DeviceDataCollection;
 };
 
 const colors = {
@@ -95,7 +97,7 @@ export const devicesByStateChartCallbacks = {
         return `Region: ${cellData.region} (Total: ${cellData.total} devices)`;
       }
 
-      const firstChild = cellData.children?.[0]?._data;
+      const firstChild = cellData.children?.[0];
 
       if (!firstChild) return '';
 
@@ -142,16 +144,14 @@ export const devicesByStateChartCallbacks = {
       };
 
       if (!isGroupedByRegion) {
-        const firstChild = cellData.children?.[0]?._data;
+        const firstChild = cellData.children?.[0];
         const stateDevices = firstChild?.devices ?? initialDeviceTotals;
 
         return generateTooltipBody(stateDevices);
       }
 
       if (isGroupedByRegion) {
-        const regionStatesData = (cellData.children ?? [])
-          .map((child) => child._data)
-          .filter((d): d is DevicesByStateData => !!d);
+        const regionStatesData = cellData.children ?? [];
 
         const regionDevices = getRegionsTotals(regionStatesData);
         return generateTooltipBody(regionDevices);
