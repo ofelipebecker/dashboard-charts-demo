@@ -98,9 +98,9 @@ export const devicesByStateChartCallbacks = {
     const treemapCell = ctx.raw as TreemapDataPointWithData;
     const cellData = treemapCell?._data;
 
-    if (!cellData) return ['', 0];
+    if (!cellData) return ['', '0'];
 
-    return [cellData.abbreviation, cellData.total];
+    return [cellData.abbreviation, String(cellData.total)];
   },
   getTooltipCallbacks: (activeGroup: 'default' | 'alternate') => ({
     title: (ctx: TooltipItem<'treemap'>[]) => {
