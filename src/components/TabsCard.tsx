@@ -1,17 +1,28 @@
-import { useState } from 'react';
+import { type ReactNode, type ChangeEvent, useState } from 'react';
 import dayjs from 'dayjs';
 
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
 import Tab from 'react-bootstrap/Tab';
 import Tabs from 'react-bootstrap/Tabs';
+import LazyTab from './LazyTab.tsx';
 
-import LazyTab from './LazyTab';
+type Charts = {
+  eventKey: string;
+  title: string;
+  renderChart: (period: string) => ReactNode;
+};
 
-const TabsCard = ({ title, charts = [] }) => {
+type TabsCardProps = {
+  title: ReactNode;
+  charts: Charts[];
+};
+
+const TabsCard = ({ title, charts }: TabsCardProps) => {
   const defaultPeriod = '3';
+  const defaultTab = charts[0]?.eventKey || 'tab0';
 
-  const [activeTab, setActiveTab] = useState(charts[0]?.eventKey || 'tab0');
+  const [activeTab, setActiveTab] = useState<string | null>(defaultTab);
   const [selectedPeriod, setSelectedPeriod] = useState(defaultPeriod);
 
   const periods = [
@@ -20,7 +31,7 @@ const TabsCard = ({ title, charts = [] }) => {
     { value: '12', months: 12, label: 'Last 12 months' },
   ];
 
-  const getFormattedDateRange = (months) => {
+  const getFormattedDateRange = (months: number) => {
     const currentDate = dayjs();
     const startDate = currentDate.subtract(months - 1, 'month');
     const endDate = currentDate;
@@ -31,8 +42,8 @@ const TabsCard = ({ title, charts = [] }) => {
     };
   };
 
-  const handlePeriodChange = (e) => {
-    const newPeriod = e.target.value;
+  const handlePeriodChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const newPeriod = event.target.value;
 
     setSelectedPeriod(newPeriod);
   };
@@ -59,8 +70,8 @@ const TabsCard = ({ title, charts = [] }) => {
           </Form.Select>
         </Card.Title>
         <Tabs
-          activeKey={activeTab}
-          onSelect={(k) => setActiveTab(k)}
+          activeKey={activeTab ?? undefined}
+          onSelect={(selectedTab) => setActiveTab(selectedTab)}
           className='mt-5'
         >
           {charts.map((chart) => (

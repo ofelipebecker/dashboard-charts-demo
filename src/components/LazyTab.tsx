@@ -1,6 +1,11 @@
-import { useState } from 'react';
+import { type ReactNode, useState } from 'react';
 
-const LazyTab = ({ active, children }) => {
+type LazyTabProps = {
+  active: boolean;
+  children: ReactNode;
+};
+
+const LazyTab = ({ active, children }: LazyTabProps) => {
   const [hasBeenActivated, setHasBeenActivated] = useState(false);
 
   if (active && !hasBeenActivated) {

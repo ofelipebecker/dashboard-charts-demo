@@ -2,11 +2,11 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-import DevicesByStateCard from './features/devices/components/DevicesByStateCard';
-import PageTitle from './components/PageTitle';
-import TopNav from './components/TopNav';
-import FinancialMobileCard from './features/financial-mobile/components/FinancialMobileCard';
-import TelecomMobileCard from './features/telecom-mobile/components/TelecomMobileCard';
+import DevicesByStateCard from './features/devices/components/DevicesByStateCard.tsx';
+import PageTitle from './components/PageTitle.tsx';
+import TopNav from './components/TopNav.tsx';
+import FinancialMobileCard from './features/financial-mobile/components/FinancialMobileCard.tsx';
+import TelecomMobileCard from './features/telecom-mobile/components/TelecomMobileCard.tsx';
 
 import './App.css';
 

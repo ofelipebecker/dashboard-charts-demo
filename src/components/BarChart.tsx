@@ -2,7 +2,8 @@ import { memo } from 'react';
 
 import { Bar } from 'react-chartjs-2';
 import {
-  Chart as ChartJS,
+  type ChartOptions,
+  Chart as ChartJSCore,
   CategoryScale,
   LinearScale,
   BarElement,
@@ -14,16 +15,28 @@ import {
 import 'chartjs-adapter-dayjs-4';
 import dayjs from 'dayjs';
 
-ChartJS.register(
+ChartJSCore.register(
   CategoryScale,
   LinearScale,
   BarElement,
   Title,
   Tooltip,
-  Legend,
+  Legend
 );
 
-const BarChart = ({ period, chartConfig }) => {
+type chartConfig = {
+  label: string;
+  chartData: number[];
+  rgbColor: string;
+  yAxisTitle: string;
+};
+
+type BarChartProps = {
+  period: string;
+  chartConfig: chartConfig;
+};
+
+const BarChart = ({ period, chartConfig }: BarChartProps) => {
   const monthsCount = parseInt(period);
 
   const { label, chartData, rgbColor, yAxisTitle } = chartConfig;
@@ -33,7 +46,7 @@ const BarChart = ({ period, chartConfig }) => {
     const startDate = currentDate.subtract(monthsCount - 1, 'month');
 
     return Array.from({ length: monthsCount }, (_, index) =>
-      startDate.add(index, 'month').format('MMM/YYYY'),
+      startDate.add(index, 'month').format('MMM/YYYY')
     );
   };
 
@@ -64,7 +77,7 @@ const BarChart = ({ period, chartConfig }) => {
     ],
   };
 
-  const options = {
+  const options: ChartOptions<'bar'> = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
