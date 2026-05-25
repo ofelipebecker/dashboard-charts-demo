@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
 
 import { Chart as ChartJSCore, Tooltip, Legend } from 'chart.js';
+import { Chart as BaseChartComponent } from 'react-chartjs-2';
 import {
   type TreemapScriptableContext,
   TreemapController,
@@ -105,6 +106,14 @@ const TreemapChart = ({
       >
         {buttonText[activeGroup]}
       </Button>
+      <div style={{ width: '100%', minHeight: '400px', position: 'relative' }}>
+        <BaseChartComponent
+          ref={chartRef}
+          type='treemap'
+          data={datasetConfig}
+          options={globalChartOptions}
+        />
+      </div>
     </div>
   );
 };
