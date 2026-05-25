@@ -12,7 +12,7 @@ type Devices = {
   tablets: number;
 };
 
-type DevicesByStateData = {
+export type DevicesByStateData = {
   name: string;
   abbreviation: string;
   region: 'North' | 'Northeast' | 'Southeast' | 'South' | 'Central-West';
