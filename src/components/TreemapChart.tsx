@@ -1,12 +1,21 @@
 import { useRef, useState } from 'react';
-import { type TreemapScriptableContext } from 'chartjs-chart-treemap';
+
+import { Chart as ChartJSCore, Tooltip, Legend } from 'chart.js';
+import {
+  type TreemapScriptableContext,
+  TreemapController,
+  TreemapElement,
+} from 'chartjs-chart-treemap';
+
+import Button from 'react-bootstrap/Button';
+
 import {
   type DevicesByStateData,
   type DevicesByStateChartCallbacks,
   type DevicesByStateChartGroupingConfig,
 } from '../features/devices/utils/devicesByStateChartConfig.ts';
 
-import Button from 'react-bootstrap/Button';
+ChartJSCore.register(TreemapController, TreemapElement, Tooltip, Legend);
 
 type TreemapChartProps = {
   rawChartData: DevicesByStateData[];
