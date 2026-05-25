@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import Card from 'react-bootstrap/Card';
 
 type CommonCardProps = {
@@ -5,9 +6,10 @@ type CommonCardProps = {
     main: string;
     secondary: string;
   };
+  chart: ReactNode;
 };
 
-const CommonCard = ({ cardTitles }: CommonCardProps) => {
+const CommonCard = ({ cardTitles, chart }: CommonCardProps) => {
   return (
     <Card className='border-0 rounded-2 mt-5 p-2 shadow-sm'>
       <Card.Body>
@@ -15,6 +17,7 @@ const CommonCard = ({ cardTitles }: CommonCardProps) => {
           {cardTitles.main}
         </Card.Title>
         <Card.Subtitle as='small'>{cardTitles.secondary}</Card.Subtitle>
+        {chart}
       </Card.Body>
     </Card>
   );
