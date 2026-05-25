@@ -21,17 +21,15 @@ const TreemapChart = ({
   const { buttonText } = groupingConfig;
 
   const chartRef = useRef(null);
-  const [activeGroup, setActiveGroup] = useState('default');
+  const [activeGroup, setActiveGroup] = useState<'default' | 'alternate'>(
+    'default'
+  );
 
   const handleToggle = () => {
     if (!chartRef.current) return;
 
-    const newGroup = activeGroup === 'default' ? 'alternate' : 'default';
-    setActiveGroup(newGroup);
+    setActiveGroup((prev) => (prev === 'default' ? 'alternate' : 'default'));
   };
-
-  const buttonLabel =
-    activeGroup === 'default' ? buttonText.default : buttonText.alternate;
 
   return (
     <div>
@@ -41,7 +39,7 @@ const TreemapChart = ({
         size='lg'
         variant='warning'
       >
-        {buttonLabel}
+        {buttonText[activeGroup]}
       </Button>
     </div>
   );
