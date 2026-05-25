@@ -19,7 +19,7 @@ const TreemapChart = ({
   chartCallbacks,
   groupingConfig,
 }: TreemapChartProps) => {
-  const { formatLabel, setCellBgColor } = chartCallbacks;
+  const { formatLabel, getTooltipCallbacks, setCellBgColor } = chartCallbacks;
   const { groups, buttonText } = groupingConfig;
 
   const chartRef = useRef(null);
@@ -64,6 +64,26 @@ const TreemapChart = ({
         },
       },
     ],
+  };
+
+  const globalChartOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        position: 'nearest',
+        titleFont: {
+          weight: 'bold',
+          size: 14,
+        },
+        bodyFont: {
+          size: 14,
+        },
+        padding: 10,
+        callbacks: getTooltipCallbacks(activeGroup),
+      },
+    },
   };
 
   return (
