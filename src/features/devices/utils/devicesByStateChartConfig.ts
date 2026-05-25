@@ -58,6 +58,17 @@ const maxTotal = Math.max(
   ...devicesByStateChartData.map((state) => state.total)
 );
 
+export const devicesByStateChartGroupingConfig = {
+  buttonText: {
+    default: 'Show Regions',
+    alternate: 'Hide Regions',
+  },
+  groups: {
+    default: ['abbreviation'],
+    alternate: ['region', 'abbreviation'],
+  },
+};
+
 export const devicesByStateChartCallbacks = {
   setCellBgColor: (
     ctx: TreemapScriptableContext,
