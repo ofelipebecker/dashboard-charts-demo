@@ -173,3 +173,5 @@ export const devicesByStateChartCallbacks = {
     },
   }),
 };
+
+export type DevicesByStateChartCallbacks = typeof devicesByStateChartCallbacks;
