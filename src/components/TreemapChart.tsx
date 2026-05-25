@@ -2,6 +2,7 @@ import { useRef, useState } from 'react';
 
 import {
   type ChartData,
+  type ChartOptions,
   Chart as ChartJSCore,
   Tooltip,
   Legend,
@@ -82,7 +83,7 @@ const TreemapChart = ({
     ],
   } as unknown as ChartData<'treemap', TreemapDataPoint[], unknown>;
 
-  const globalChartOptions = {
+  const globalChartOptions: ChartOptions<'treemap'> = {
     responsive: true,
     maintainAspectRatio: false,
     plugins: {
