@@ -69,6 +69,9 @@ export const devicesByStateChartGroupingConfig = {
   },
 };
 
+export type DevicesByStateChartGroupingConfig =
+  typeof devicesByStateChartGroupingConfig;
+
 export const devicesByStateChartCallbacks = {
   setCellBgColor: (
     ctx: TreemapScriptableContext,
