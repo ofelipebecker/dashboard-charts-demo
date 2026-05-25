@@ -12,10 +12,12 @@ type Devices = {
   tablets: number;
 };
 
+type Region = 'North' | 'Northeast' | 'Southeast' | 'South' | 'Central-West';
+
 export type DevicesByStateData = {
   name: string;
   abbreviation: string;
-  region: 'North' | 'Northeast' | 'Southeast' | 'South' | 'Central-West';
+  region: Region;
   total: number;
   devices: Devices;
 };
@@ -41,18 +43,19 @@ const colors = {
   },
 };
 
-export const devicesByStateChartData = devicesByStateData.map((state) => ({
-  name: state.name,
-  abbreviation: state.abbreviation,
-  region: state.region,
-  total: state.devices.total,
-  devices: {
-    desktops: state.devices.desktops,
-    laptops: state.devices.laptops,
-    smartphones: state.devices.smartphones,
-    tablets: state.devices.tablets,
-  },
-}));
+export const devicesByStateChartData: DevicesByStateData[] =
+  devicesByStateData.map((state) => ({
+    name: state.name,
+    abbreviation: state.abbreviation,
+    region: state.region as Region,
+    total: state.devices.total,
+    devices: {
+      desktops: state.devices.desktops,
+      laptops: state.devices.laptops,
+      smartphones: state.devices.smartphones,
+      tablets: state.devices.tablets,
+    },
+  }));
 
 const maxTotal = Math.max(
   ...devicesByStateChartData.map((state) => state.total)
