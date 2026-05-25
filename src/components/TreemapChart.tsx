@@ -19,7 +19,7 @@ const TreemapChart = ({
   chartCallbacks,
   groupingConfig,
 }: TreemapChartProps) => {
-  const { setCellBgColor } = chartCallbacks;
+  const { formatLabel, setCellBgColor } = chartCallbacks;
   const { groups, buttonText } = groupingConfig;
 
   const chartRef = useRef(null);
@@ -51,6 +51,16 @@ const TreemapChart = ({
             weight: 'bold',
           },
           padding: 5,
+        },
+        labels: {
+          display: true,
+          overflow: 'hidden',
+          formatter: (ctx: TreemapScriptableContext) => formatLabel(ctx),
+          color: '#fff',
+          font: {
+            size: 12,
+            weight: 'bold',
+          },
         },
       },
     ],
