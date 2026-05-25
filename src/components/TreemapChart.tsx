@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react';
+import { type TreemapScriptableContext } from 'chartjs-chart-treemap';
 import {
   type DevicesByStateData,
   type DevicesByStateChartCallbacks,
@@ -18,7 +19,8 @@ const TreemapChart = ({
   chartCallbacks,
   groupingConfig,
 }: TreemapChartProps) => {
-  const { buttonText } = groupingConfig;
+  const { setCellBgColor } = chartCallbacks;
+  const { groups, buttonText } = groupingConfig;
 
   const chartRef = useRef(null);
   const [activeGroup, setActiveGroup] = useState<'default' | 'alternate'>(
@@ -29,6 +31,29 @@ const TreemapChart = ({
     if (!chartRef.current) return;
 
     setActiveGroup((prev) => (prev === 'default' ? 'alternate' : 'default'));
+  };
+
+  const datasetConfig = {
+    datasets: [
+      {
+        tree: rawChartData,
+        key: 'total',
+        groups: groups[activeGroup],
+        backgroundColor: (ctx: TreemapScriptableContext) =>
+          setCellBgColor(ctx, activeGroup),
+        borderRadius: 4,
+        borderWidth: 1,
+        captions: {
+          align: 'center',
+          color: '#fff',
+          font: {
+            size: 14,
+            weight: 'bold',
+          },
+          padding: 5,
+        },
+      },
+    ],
   };
 
   return (
