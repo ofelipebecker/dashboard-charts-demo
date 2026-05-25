@@ -1,9 +1,15 @@
 import { useRef, useState } from 'react';
 
-import { Chart as ChartJSCore, Tooltip, Legend } from 'chart.js';
+import {
+  type ChartData,
+  Chart as ChartJSCore,
+  Tooltip,
+  Legend,
+} from 'chart.js';
 import { Chart as BaseChartComponent } from 'react-chartjs-2';
 import {
   type TreemapScriptableContext,
+  type TreemapDataPoint,
   TreemapController,
   TreemapElement,
 } from 'chartjs-chart-treemap';
@@ -54,11 +60,11 @@ const TreemapChart = ({
         borderRadius: 4,
         borderWidth: 1,
         captions: {
-          align: 'center',
+          align: 'center' as const,
           color: '#fff',
           font: {
             size: 14,
-            weight: 'bold',
+            weight: 'bold' as const,
           },
           padding: 5,
         },
@@ -69,12 +75,12 @@ const TreemapChart = ({
           color: '#fff',
           font: {
             size: 12,
-            weight: 'bold',
+            weight: 'bold' as const,
           },
         },
       },
     ],
-  };
+  } as unknown as ChartData<'treemap', TreemapDataPoint[], unknown>;
 
   const globalChartOptions = {
     responsive: true,
